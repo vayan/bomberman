@@ -5,7 +5,7 @@
 // Login   <carlie_a@epitech.net>
 // 
 // Started on  Mon May  7 10:03:08 2012 anatole carlier
-// Last update Wed May 30 13:03:05 2012 anatole carlier
+// Last update Wed May 30 13:05:56 2012 anatole carlier
 //
 
 #include "IA.hh"
@@ -116,6 +116,7 @@ void	IA::IA_moves(Level *lv, std::list<AObject*> all_object)
 
 int     IA::search_bomb(std::map<int, std::map<int, char> > map, Level *lv)
 {
+  wait = time_wait;
   if (map[x][y] == 'b')
     {
       this->escape = 1;
@@ -163,6 +164,7 @@ int     IA::search_bomb(std::map<int, std::map<int, char> > map, Level *lv)
 
 void	IA::prev_move(std::map<int, std::map<int, char> > map, Level *lv)
 {
+  wait = time_wait;
   switch (prev)
     {
     case 'l':
