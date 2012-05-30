@@ -5,7 +5,7 @@
 // Login   <carlie_a@epitech.net>
 // 
 // Started on  Mon May  7 10:03:08 2012 anatole carlier
-// Last update Wed May 30 11:42:54 2012 anatole carlier
+// Last update Wed May 30 12:37:23 2012 anatole carlier
 //
 
 #include "IA.hh"
@@ -24,19 +24,22 @@ IA::IA(int level, Player* pl)
     {
     case EASY:
       {
+	std::cout << "Easy!";
 	this->wait = 50;
-	this->time_wait = 15;
+	this->time_wait = 75;
       }
     case HARD:
       {
+	std::cout << "Hard...";
 	this->wait = 20;
-	this->time_wait = 5;
+	this->time_wait = 50;
 
       }
     case INFERNO:
       {
+	std::cout << "Inferno!!!!!!!";
         this->wait = 0;
-        this->time_wait = 0;
+        this->time_wait = 20;
 	this->allies = true;
       }
     }
@@ -83,7 +86,7 @@ void	IA::IA_moves(Level *lv, std::list<AObject*> all_object)
     }
   else if (search_bomb(map, lv) == 0)
     {
-      if (level == INFERNO)
+      if (level != 0)
 	{
 	  if (map[x][y+1] == 'r' || map[x][y+2] == 'r' || map[x+1][y] == 'r' || map[x+2][y] == 'r' || map[x-1][y] == 'r' || map[x-2][y] == 'r')
 	    {
@@ -96,7 +99,7 @@ void	IA::IA_moves(Level *lv, std::list<AObject*> all_object)
 	      return;
 	    }
 	}
-      else if (x == 1)
+      if (x == 1)
 	{
 	  if (see_right(map, lv) != 0)
 	    if (see_down(map, lv) != 0)
