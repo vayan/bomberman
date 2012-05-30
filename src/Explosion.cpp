@@ -41,7 +41,7 @@ void          Explosion::drawSurface(float _x, float _y, float z, float size, in
 {
   float         offset;
 
-  offset = size / 2;
+  offset = 0.5 / 2;
   switch (mod)
     {
     case 1:
@@ -77,7 +77,7 @@ void          Explosion::animExplose()
 
 void           Explosion::drawAnimY(int _y)
 {
-  float         offset = 1 / 2.0;
+  float         offset = 0.5 / 2.0;
   int		ry = y - _y;
   float		div = 0.9;
 
@@ -106,7 +106,7 @@ void           Explosion::drawAnimY(int _y)
 
 void          Explosion::drawAnimX(int _x)
 {
-  float         offset = 1 / 2.0;
+  float         offset = 0.5 / 2.0;
   int		rx = x - _x;
   float		div = 0.9;
 
