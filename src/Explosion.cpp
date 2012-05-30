@@ -2,7 +2,6 @@
 
 void Explosion::initialize(void)
 {
-  std::cout << "Initialize the explosion" << std::endl;
 }
 
 void Explosion::update(gdl::GameClock const &, gdl::Input &)
@@ -67,8 +66,6 @@ void          Explosion::drawSurface(float _x, float _y, float z, float size, in
 
 void          Explosion::animExplose()
 {
-  std::cout << Up << " " << Down << " " << Left << " " << Right << std::endl;
-  std::cout << x << std::endl;
   drawAnimY(this->y + Down);
   drawAnimY(this->y - Up);
   drawAnimX(this->x + Right);
@@ -151,5 +148,4 @@ Explosion::Explosion(int up, int down, int left, int right, int x, int y)
 
 Explosion::~Explosion()
 {
-  std::cout << "Delete the explosion" << std::endl;
 }
