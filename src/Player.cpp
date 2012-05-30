@@ -11,6 +11,7 @@
 #include		"Player.hh"
 #include		"Utils.hh"
 #include		"Move.hh"
+#include    "Settings.hh"
 #include		<iostream>
 
 void			printMap(Level *lvl);
@@ -33,6 +34,7 @@ Player::Player(std::string _name, int _x, int _y, int _id, int _life, float _spe
   int _power, int _nb_bomb, Level *_lvl, Bomberman* _game, int ty, Bonus *bo)
 :AObject()
 {
+  Settings Conf;
   bon = bo;
   this->_rotation = 0;
   time_bombe = 0;
@@ -78,7 +80,7 @@ Player::Player(std::string _name, int _x, int _y, int _id, int _life, float _spe
    }
    else
    {
-     _IA = new IA(1, this);
+     _IA = new IA(Conf.GetDifficulty(), this);
      key_up = gdl::Keys::A;
      key_down = gdl::Keys::A;
      key_left = gdl::Keys::A;
