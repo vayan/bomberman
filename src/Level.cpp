@@ -81,6 +81,8 @@ void					Level::generateMap(Settings conf)
   int					nbPlayers = _conf.GetNbPlayers();
   int					nbIas = _conf.GetNb_AI();
 
+
+  std::cout << ">> nb player" << nbPlayers << " " << nbIas << std::endl;
   while (y < height)
   {
     if (x == width - 1)
@@ -119,7 +121,9 @@ void					Level::placePlayer(int nbPlayers, int nbIas)
   int					dir = 0;
 
   if (rep < 4)
+    std::cout << "Pas jouable." << std::endl;
   //throw(new Errur("Too many players for this map."));
+  std::cout << per << " " << rep << std::endl;
   while (nbTot > 0)
     {
       if (!(i % rep))
@@ -142,6 +146,7 @@ void					Level::placePlayer(int nbPlayers, int nbIas)
 	  else
 	    tmp_x = i + 1;
 	  _map[tmp_x][tmp_y] = player;
+	  std::cout << i << " " << tmp_x << " " << tmp_y << std::endl;
 	  if (player == 'r' && nbPlayers == 2)
 	    player = 'g';
 	  else if (player == 'g' || nbPlayers == 1)

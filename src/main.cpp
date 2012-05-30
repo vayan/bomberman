@@ -52,9 +52,7 @@ int		main(void)
     level->generateMap(conf);
   Bomberman	*bomberman = new Bomberman(level);
   bomberman->run();
-
   delete bomberman;
   delete level;
-
   return (EXIT_SUCCESS);
 }

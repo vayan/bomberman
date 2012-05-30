@@ -37,6 +37,7 @@ void    Bomberman::init_new(void)
        break;
        case 'r':
        {
+        std::cout << "creation player" << std::endl;
          Player *pl = new Player("Lola", x, y, 1, 3, 2, 2, 1, this->level, this, 0, bonus);
          _hud->addPlayer(pl);
          this->objects_.push_back(pl);
@@ -237,7 +238,7 @@ void  Bomberman::InputPause()
 
 void  Bomberman::InputEnd()
 {
-  usleep(500000);
+  //usleep(500000);
   if (input_.isMouseButtonDown(gdl::Mouse::Left) == true)
   {
     int x = input_.getMousePositionX();
