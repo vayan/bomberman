@@ -15,6 +15,8 @@ bool  	Move::InMap(int new_x, int new_y, Player *pl, Level *lvl)
 {
 	std::map<int, std::map<int, char> > map = lvl->getMap();
 
+	if (pl == NULL) {}
+
 	if (new_x < 0 || new_y < 0 || new_x >= lvl->getHeight() || new_y >= lvl->getWidth())
 		return (false);
 	return (true);
@@ -41,6 +43,8 @@ bool 	Move::TryMoveX(int new_x, Level *lvl, Player *pl)
 bool 	Move::TryMove(int new_x, int new_y, Player *pl, Level *lvl, std::list<AObject*> all_obj)
 {
 	std::list<AObject*>::iterator it;
+
+	it = all_obj.begin();
 
 	if (new_y != pl->getY() && new_x != pl->getX())
 		return (false);
