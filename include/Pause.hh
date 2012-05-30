@@ -21,7 +21,7 @@
 
 #define PAUSE_BUTTON_SAVE  	x >= 419  && x <= 567 && y >= 600 && y <= 641
 #define PAUSE_BUTTON_RESUME x >= 864  && x <= 1015 && y >= 600 && y <= 641
-#define PAUSE_BUTTON_EXIT	x >= 1036  && x <= 1183 && y >= 544 && y <= 586
+#define PAUSE_BUTTON_EXIT	x >= 1036  && x <= 1183 && y >= 600 && y <= 641
 
 class 		Bomberman;
 class 		Menu;

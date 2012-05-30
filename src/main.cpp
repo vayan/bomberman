@@ -59,8 +59,6 @@ int		main(void)
     Bomberman	*bomberman = new Bomberman(level);
     bomberman->run();
 
-    
-
     delete bomberman;
     delete level;
   }
