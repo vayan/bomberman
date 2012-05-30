@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Tue May  8 22:51:08 2012 randy lyvet
-// Last update Wed May 30 14:03:55 2012 alexandre haulotte
+// Last update Wed May 30 15:14:36 2012 yuguo cao
 //
 
 #include	"Texture.hh"
@@ -23,6 +23,7 @@ Texture::Texture()
   Nbd_ = gdl::Image::load("assets/texture/bombdown.png");
   Spd_ = gdl::Image::load("assets/texture/speed-.jpeg");
   Line_ = gdl::Image::load("assets/texture/line.png");
+  Pierce_ = gdl::Image::load("assets/texture/pierce.png");
 }
 
 Texture::~Texture()

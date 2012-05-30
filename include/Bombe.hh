@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Wed May  2 12:30:19 2012 alexandre haulotte
-// Last update Wed May 30 11:58:38 2012 randy lyvet
+// Last update Wed May 30 15:11:58 2012 yuguo cao
 //
 
 #ifndef	__BOMBE_HH__
@@ -30,6 +30,8 @@ class Bombe : public AObject
   Level		*lvl;
   Bonus		*bonus;
   int		score;
+  bool		_pierce;
+
 public:
   std::list<AObject*>::iterator getObj(std::list<AObject*> &obj, int x_, int y_);
 
@@ -51,8 +53,8 @@ public:
   void			draw(void);
   void                  drawSurface(float x, float y, float z, float size, int mod);
 
-  Bombe(Player *j, Bonus *bon, Level *lvl);
-  Bombe(int &_x, int &_y, int &_powa);
+  Bombe(Player *j, Bonus *bon, Level *lvl, bool pierce);
+  Bombe(int &_x, int &_y, int &_powa, bool pierce);
   ~Bombe();
 };
 

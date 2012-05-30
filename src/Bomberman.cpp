@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 17:27:27 2012 randy lyvet
-// Last update Wed May 30 14:42:14 2012 yuguo cao
+// Last update Wed May 30 15:13:39 2012 yuguo cao
 //
 
 #include	<iostream>
@@ -320,7 +320,7 @@ void		Bomberman::update()
 Bombe*		Bomberman::addBombe(Player* pl)
 {
   _audio->play(1);
-  Bombe *b = new Bombe(pl, bonus, level);
+  Bombe *b = new Bombe(pl, bonus, level, pl->getPierceBomb());
   this->objects_.push_back(b);
   return (b);
 }

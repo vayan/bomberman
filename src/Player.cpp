@@ -5,16 +5,14 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Tue May 29 15:09:13 2012 alexandre haulotte
-// Last update Wed May 30 14:32:55 2012 yuguo cao
+// Last update Wed May 30 15:08:55 2012 yuguo cao
 //
 
 #include		"Player.hh"
 #include		"Utils.hh"
 #include		"Move.hh"
-#include    "Settings.hh"
+#include		"Settings.hh"
 #include		<iostream>
-
-void			printMap(Level *lvl);
 
 void			Player::actLvl(int _x, int _y, char c)
 {
@@ -36,6 +34,7 @@ Player::Player(std::string _name, int _x, int _y, int _id, int _life, float _spe
 {
   Settings Conf;
   multiBombe = false;
+  pierceBombe = false;
   bon = bo;
   this->_rotation = 0;
   _direction = 0;
@@ -135,29 +134,29 @@ void			Player::update(gdl::GameClock const &clock, gdl::Input &_input)
   input = &_input;
   ScanAllAction(lvl, game->getObj());
   if (bombes.size() > 0)
-  {
-    std::list<AObject*>::iterator itb = bombes.begin();
-    while (!bombes.empty() && itb != this->bombes.end())
     {
-     if (static_cast<Bombe*>((*itb))->time(false))
-     {
-       lvl->setCase((*itb)->getX(), (*itb)->getY(), 'f');
-       static_cast<Bombe*>((*itb))->explose(this->game->getObj());
-       game->deleteBombe(static_cast<Bombe*>(*itb));
-       this->bombes.erase(itb);
-       score += static_cast<Bombe*>(*itb)->scoring();
-       delete (*itb);
-       itb = this->bombes.begin();
-     }
-     if (!bombes.empty())
-     {
-       itb++;
-     }
-   }
- }
+      std::list<AObject*>::iterator itb = bombes.begin();
+      while (!bombes.empty() && itb != this->bombes.end())
+	{
+	  if (static_cast<Bombe*>((*itb))->time(false))
+	    {
+	      lvl->setCase((*itb)->getX(), (*itb)->getY(), 'f');
+	      static_cast<Bombe*>((*itb))->explose(this->game->getObj());
+	      game->deleteBombe(static_cast<Bombe*>(*itb));
+	      this->bombes.erase(itb);
+	      score += static_cast<Bombe*>(*itb)->scoring();
+	      delete (*itb);
+	      itb = this->bombes.begin();
+	    }
+	  if (!bombes.empty())
+	    {
+	      itb++;
+	    }
+	}
+    }
   //	printMap(lvl);
- nb_bomb = bomb_max - bombes.size();
- this->model_.update(clock);
+  nb_bomb = bomb_max - bombes.size();
+  this->model_.update(clock);
 }
 
 void			Player::draw(void)
@@ -174,23 +173,23 @@ void			Player::draw(void)
 
 std::string &Player::pack()
 {
-	_pack = name + ';' +
-	to_string(id) + ';' +
-	to_string(life) + ';' +
-	to_string(speed) + ';' +
-	to_string(power) + ';' +
-  to_string(x) + ';' +
-  to_string(y) + ';' +
-  to_string(x_pix) + ';' +
-  to_string(y_pix) + ';' +
-  to_string(_rotation) + ';' +
-  to_string(awake) + ';' +
-  to_string(action) + ';' +
-  to_string(bomb_max) + ';' +
-  to_string(time_bombe) + ';' +
-  to_string(time_mvt) + ';' +
-  to_string(ty) + ';' +
-  to_string(nb_bomb);
+  _pack = name + ';' +
+    to_string(id) + ';' +
+    to_string(life) + ';' +
+    to_string(speed) + ';' +
+    to_string(power) + ';' +
+    to_string(x) + ';' +
+    to_string(y) + ';' +
+    to_string(x_pix) + ';' +
+    to_string(y_pix) + ';' +
+    to_string(_rotation) + ';' +
+    to_string(awake) + ';' +
+    to_string(action) + ';' +
+    to_string(bomb_max) + ';' +
+    to_string(time_bombe) + ';' +
+    to_string(time_mvt) + ';' +
+    to_string(ty) + ';' +
+    to_string(nb_bomb);
 
   return (_pack);
 }
@@ -498,6 +497,9 @@ void			Player::ScanAllAction(Level *_lvl, std::list<AObject*>& all_object)
 	case 6:
 	  multiBombe = true;
 	  break;
+	case 7:
+	  pierceBombe = true;
+	  break;
 	default:
 	  break;
 	}
@@ -525,7 +527,21 @@ int   Player::getTy() { return (ty); }
 float 	Player::getSpeed() const { return (speed); }
 std::string	Player::getName() const { return (name); } 
 int		Player::getBomb() const { return (nb_bomb); }
-bool		Player::getMultiBomb() const { return (multiBombe); }
+
+int		Player::getMultiBomb() const
+{
+  if (multiBombe)
+    return (1);
+  return (0);
+}
+
+int		Player::getPierceBomb() const
+{
+  if (pierceBombe)
+    return (1);
+  return (0);
+}
+
 IA    *Player::getIA(){ return (_IA); }
 void Player::setX(int _x) { x = _x; }
 void Player::setY(int _y) { y = _y; }

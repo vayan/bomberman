@@ -30,7 +30,8 @@ public:
   int 			getBombMax() const;
   virtual int		getX() const;
   virtual int		getY() const;
-  bool			getMultiBomb() const;
+  int			getMultiBomb() const;
+  int			getPierceBomb() const;
   IA        *getIA();
   int       getTy();
   char			getLvlCase(int _x, int _y) const;
@@ -86,6 +87,7 @@ private:
   gdl::Keys::Key	key_right;
   gdl::Keys::Key	key_bombe;
   bool			multiBombe;
+  bool			pierceBombe;
   std::string 		_pack;
   std::string		name;
 

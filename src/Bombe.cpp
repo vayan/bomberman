@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Wed May  2 12:29:56 2012 alexandre haulotte
-// Last update Wed May 30 14:05:58 2012 alexandre haulotte
+// Last update Wed May 30 15:20:56 2012 yuguo cao
 //
 
 // 0 : Gauche
@@ -38,23 +38,25 @@ void		Bombe::draw()
   glPopMatrix();
 }
 
-Bombe::Bombe(Player *j, Bonus *bon, Level *lvl)
+Bombe::Bombe(Player *j, Bonus *bon, Level *lvl, bool pierce)
 :AObject(), powa(j->getPower()), lvl(lvl), bonus(bon)
 {
   score = 0;
   x = j->getX();
   y = j->getY();
+  _pierce = pierce;
   _type = 3;
   timer = 150;
   this->model_ = gdl::Model::load("assets/bomb.fbx");
 }
 
-Bombe::Bombe(int &_x, int &_y, int &_powa)
+Bombe::Bombe(int &_x, int &_y, int &_powa, bool pierce)
 :AObject(), powa(_powa), lvl(NULL)
 {
   score = 0;
   x = _x;
   y = _y;
+  _pierce = pierce;
   _type = 3;
   timer = 150;
   this->model_ = gdl::Model::load("assets/bomb.fbx");
@@ -162,7 +164,7 @@ bool	Bombe::bang(int dir, bool state, std::list<AObject*> &obj, int actBang)
 		  score += 10;
 		}
 	      lvl->setCase(x_b, y_b, 'f');
-	      if (type != 0)
+	      if (type != 0 && !_pierce)
 		return (true);
 	      c = bonus->getBonus(x_b, y_b);
 	      switch (c)
@@ -188,9 +190,13 @@ bool	Bombe::bang(int dir, bool state, std::list<AObject*> &obj, int actBang)
 		case 'l':
 		  obj.push_back( bonus->createBonus(x_b, y_b, 1, 7));
 		  break;
+		case 'u':
+		  obj.push_back( bonus->createBonus(x_b, y_b, 1, 8));
+		  break;
 		default:
 		  break;
 		}
+	      return (_pierce);
 	    }
 	}
     }
@@ -241,7 +247,7 @@ Bombe	*Bombe::unpack(std::string str)
   x = to_number<int>(*(it++));
   y = to_number<int>(*(it++));
   pow = to_number<int>(*(it));
-  bom = new Bombe(x, y, pow);
+  bom = new Bombe(x, y, pow, false);
   return (bom);
 }
 

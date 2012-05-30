@@ -5,7 +5,7 @@
 // Login   <cao_y@epitech.net>
 // 
 // Started on  Wed May 23 11:03:56 2012 yuguo cao
-// Last update Wed May 30 14:35:40 2012 yuguo cao
+// Last update Wed May 30 15:40:53 2012 yuguo cao
 //
 
 #include "Hud.hh"
@@ -20,6 +20,7 @@ Hud::Hud()
   _stats.push_back(gdl::Image::load("assets/img/power.png"));
   _stats.push_back(gdl::Image::load("assets/img/bombe.png"));
   _stats.push_back(gdl::Image::load("assets/img/line.png"));
+  _stats.push_back(gdl::Image::load("assets/img/pierce.png"));
   _back = gdl::Image::load("assets/img/player1_hud.png");
   _back2 = gdl::Image::load("assets/img/player2_hud.png");
 }
@@ -43,6 +44,7 @@ void		Hud::printStat(float nb, int player, int line)
 {
   int		i = 0;
   int		margin;
+  int		padding = 0;
 
   if (line == 1)
     nb = 6 - nb;
@@ -60,6 +62,14 @@ void		Hud::printStat(float nb, int player, int line)
     case 3:
       margin = 405;
       break;
+    case 4:
+      margin = 600;
+      padding = 20;
+      break;
+    case 5:
+      margin = 600;
+      padding = 130;
+      break;
     default:
       margin = line;
     }
@@ -67,7 +77,7 @@ void		Hud::printStat(float nb, int player, int line)
     {
       while (i < nb && i < 20)
 	{
-	  drawImage(_stats[line], 8 + i * 27 - (i / 10) * 27 * 10, 850 - (i / 10) * 27 - margin);
+	  drawImage(_stats[line], 8 + i * 27 - (i / 10) * 27 * 10 + padding, 850 - (i / 10) * 27 - margin);
 	  i++;
 	}
     }
@@ -75,7 +85,7 @@ void		Hud::printStat(float nb, int player, int line)
     {
       while (i < nb)
 	{
-	  drawImage(_stats[line], 1574 - 8 - i * 27 + (i / 10) * 27 * 10, 850 - (i / 10) * 27 - margin);
+	  drawImage(_stats[line], 1574 - (padding + 75 * (padding > 0)) - 8 - i * 27 + (i / 10) * 27 * 10, 850 - (i / 10) * 27 - margin);
 	  i++;
 	}
     }
@@ -90,6 +100,8 @@ void		Hud::printPlayer()
       printStat(_player1->getSpeed(), 0, 1);
       printStat(_player1->getPower(), 0, 2);
       printStat(_player1->getBombMax(), 0, 3);
+      printStat(_player1->getMultiBomb(), 0, 4);
+      printStat(_player1->getPierceBomb(), 0, 5);
     }
   if (_player2)
     {
@@ -98,6 +110,8 @@ void		Hud::printPlayer()
       printStat(_player2->getSpeed(), 1, 1);
       printStat(_player2->getPower(), 1, 2);
       printStat(_player2->getBombMax(), 1, 3);
+      printStat(_player2->getMultiBomb(), 1, 4);
+      printStat(_player2->getPierceBomb(), 1, 5);
     }
 }
 

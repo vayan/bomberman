@@ -5,7 +5,7 @@
 // Login   <cao_y@epitech.net>
 // 
 // Started on  Wed May 23 11:05:00 2012 yuguo cao
-// Last update Fri May 25 14:18:14 2012 yuguo cao
+// Last update Wed May 30 15:27:05 2012 yuguo cao
 //
 
 #ifndef		__HUD__
@@ -30,10 +30,6 @@ private:
   Player			*_player1;
   Player			*_player2;
   std::vector<gdl::Image>	_stats;
-  // gdl::Image	_life;
-  // gdl::Image	_speed;
-  // gdl::Image	_power;
-  // gdl::Image	_bombMax;
   gdl::Image			_back;
   gdl::Image			_back2;
 
