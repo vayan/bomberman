@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 16:11:33 2012 randy lyvet
-// Last update Tue May 22 11:29:19 2012 yuguo cao
+// Last update Wed May 30 11:05:30 2012 randy lyvet
 //
 
 #include        <cstdlib>
@@ -19,6 +19,7 @@ void Camera::update(gdl::GameClock const & gameClock, gdl::Input & input)
 {
   if (input.isKeyDown(gdl::Keys::Escape) == true)
     exit(EXIT_SUCCESS);
+  gameClock.getElapsedTime();
 }
 
 void		Camera::setPosition(float height, float width)

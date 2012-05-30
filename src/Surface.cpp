@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Tue May  8 19:07:53 2012 randy lyvet
-// Last update Tue May 29 18:12:47 2012 alexandre haulotte
+// Last update Wed May 30 11:05:03 2012 randy lyvet
 //
 
 #include		"Object.hh"
@@ -15,7 +15,10 @@ void			Surface::initialize()
 }
 
 void			Surface::update(gdl::GameClock const & gameClock, gdl::Input & input)
-{}
+{
+  gameClock.getElapsedTime();
+  input.getMousePositionX();
+}
 
 void                    Surface::drawSurface(float x, float y, float z, float size)
 {

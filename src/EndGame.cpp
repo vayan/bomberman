@@ -22,8 +22,8 @@ void      EndGame::initialize(void)
 
 void      EndGame::update(gdl::GameClock const &clock, gdl::Input &_input)
 {
-
-
+  clock.getElapsedTime();
+  _input.getMousePositionX();
 }
 
 void      EndGame::draw(void)

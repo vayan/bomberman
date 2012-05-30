@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Wed May  2 12:29:56 2012 alexandre haulotte
-// Last update Tue May 29 18:14:32 2012 alexandre haulotte
+// Last update Wed May 30 11:07:16 2012 randy lyvet
 //
 
 // 0 : Gauche
@@ -23,7 +23,8 @@ void		Bombe::initialize()
 
 void		Bombe::update(gdl::GameClock const &clock, gdl::Input &_input)
 {
-
+  clock.getElapsedTime();
+  _input.getMousePositionX();
 }
 
 void		Bombe::draw()

@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 17:30:05 2012 randy lyvet
-// Last update Wed May 23 11:54:19 2012 alexandre haulotte
+// Last update Wed May 30 11:07:41 2012 randy lyvet
 //
 
 #include		"Object.hh"
@@ -14,7 +14,10 @@ void			Cube::initialize()
 {}
 
 void			Cube::update(gdl::GameClock const & gameClock, gdl::Input & input)
-{}
+{
+  gameClock.getElapsedTime();
+  input.getMousePositionX();
+}
 
 void			Cube::drawSurface(float x, float y, float z, float size, int mod)
 {

@@ -23,7 +23,6 @@ void      Pause::update(gdl::GameClock const &clock, gdl::Input &_input)
 {
   clock.getElapsedTime();
   _input.getMousePositionX();
-  return;
 }
 
 void      Pause::draw(void)

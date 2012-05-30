@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 12:15:05 2012 randy lyvet
-// Last update Fri May 25 15:53:42 2012 yuguo cao
+// Last update Wed May 30 11:09:06 2012 randy lyvet
 //
 
 #include	<map>
@@ -33,7 +33,7 @@ std::map<int,std::map<int,char> > genmap()
  return (map);
 }
 
-int		main(int ac, char **av)
+int		main(void)
 {
   while (11)
   {
