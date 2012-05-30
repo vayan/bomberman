@@ -240,6 +240,7 @@ void  Bomberman::InputPause()
 
 void  Bomberman::InputEnd()
 {
+  usleep(500000);
   if (input_.isMouseButtonDown(gdl::Mouse::Left) == true)
   {
     int x = input_.getMousePositionX();

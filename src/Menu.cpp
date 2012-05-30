@@ -139,8 +139,8 @@ void		Menu::save()
 		conf.SetMapY(11);
 		break;
 		case 1:
-		conf.SetMapx(22);
-		conf.SetMapY(22); 
+		conf.SetMapx(17);
+		conf.SetMapY(17); 
 		break;
 		case 2:
 		conf.SetMapx(33);
