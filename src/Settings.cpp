@@ -19,7 +19,7 @@ Settings::Settings()
 		outfile << "0" << std::endl;
 		outfile.close();
 	}
-	
+
 	infile.open(filename.c_str());
 
 	if (infile.good())
