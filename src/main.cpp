@@ -38,10 +38,11 @@ int		main(void)
   while (11)
   {
     Level   *level = new Level();
-    Menu    GUI;
+    Menu    *GUI = new Menu();
 
-    GUI.run();
+    GUI->run();
 
+    delete GUI;
     Settings conf;
 
     if (conf.GetSVG() == 1)
@@ -58,9 +59,10 @@ int		main(void)
     Bomberman	*bomberman = new Bomberman(level);
     bomberman->run();
 
+    
+
     delete bomberman;
     delete level;
-    glClearColor(0, 0, 0 ,0);
   }
   return (EXIT_SUCCESS);
 }

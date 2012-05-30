@@ -11,9 +11,6 @@ void 	Save::SaveFile(Level *lvl, std::list<AObject*> all_obj)
 	std::list<AObject*>::iterator it;
 
 	std::ofstream outfile (filename.c_str());
-
-	std::cout << "on save la map " << lvl->pack() << std::endl;
-
 	outfile << "###MAP####" << std::endl;
 	outfile << lvl->pack() << std::endl;
 	outfile << "###OBJ####" << std::endl;
