@@ -5,7 +5,7 @@
 // Login   <cao_y@epitech.net>
 // 
 // Started on  Wed May 23 11:03:56 2012 yuguo cao
-// Last update Fri May 25 16:16:54 2012 yuguo cao
+// Last update Wed May 30 11:16:33 2012 randy lyvet
 //
 
 #include "Hud.hh"
@@ -54,7 +54,6 @@ Hud::Hud()
 void		Hud::printStat(float nb, int player, int line)
 {
   int		i = 0;
-  int		s;
   int		margin;
 
   if (line == 1)
