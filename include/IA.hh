@@ -35,8 +35,8 @@ public:
   enum level
     {
       EASY,
-      NORMAL,
-      HARD
+      HARD,
+      INFERNO
     };
 };
 

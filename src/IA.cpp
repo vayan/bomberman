@@ -5,7 +5,7 @@
 // Login   <carlie_a@epitech.net>
 // 
 // Started on  Mon May  7 10:03:08 2012 anatole carlier
-// Last update Wed May 30 10:25:07 2012 anatole carlier
+// Last update Wed May 30 11:03:41 2012 anatole carlier
 //
 
 #include "IA.hh"
@@ -24,18 +24,18 @@ IA::IA(int level, Player* pl)
     case EASY:
       {
 	this->wait = 50;
-	this->time_wait = 200;
-      }
-    case NORMAL:
-      {
-	this->wait = 20;
-	this->time_wait = 150;
-
+	this->time_wait = 15;
       }
     case HARD:
       {
+	this->wait = 20;
+	this->time_wait = 5;
+
+      }
+    case INFERNO:
+      {
         this->wait = 0;
-        this->time_wait = 75;
+        this->time_wait = 0;
 	this->allies = true;
       }
     }
@@ -69,16 +69,14 @@ void	IA::IA_moves(Level *lv, std::list<AObject*> all_object)
       else
 	{
 	  i = -1;
-	  while (++i != _pl->getPower())
+	  while (++i <= _pl->getPower())
 	    prev_move(map, lv);
 	}
     }
   else if (search_bomb(map, lv) == 0)
     {
-      if (y == (lv->getWidth() - 2) && x < 3)
-	{
-	  see_down(map, lv);
-	}
+      if ((y == (lv->getWidth() - 3) || (y == (lv->getWidth() - 2))) && x < lv->getHeight() - 3 && prev != 'u')
+	see_down(map, lv);
       else if (x == 1)
 	see_right(map, lv);
       else
@@ -165,6 +163,7 @@ void	IA::prev_move(std::map<int, std::map<int, char> > map, Level *lv)
 
 int	IA::see_left(std::map<int, std::map<int, char> > map, Level *lv)
 {
+  wait = time_wait;
   switch (map[x][y-1])
     {
     case 'w':
@@ -198,15 +197,16 @@ int	IA::see_left(std::map<int, std::map<int, char> > map, Level *lv)
 
 int     IA::see_up(std::map<int, std::map<int, char> > map, Level *lv)
 {
+  wait = time_wait;
   switch (map[x-1][y])
     {
     case 'w':
       return (1); break;
     case 'd':
       {
-	if (map[x][y-1] != 'f' && map[x][y+1] != 'f')
+	if (map[x][y-1] == 'f' && map[x][y+1] == 'f')
 	  {
-	    _pl->ActionDropBomb(lv); escape = 1; 
+	    _pl->ActionDropBomb(lv); see_right(map, lv); escape = 1; 
 	    return (1); break;
 	  }
 	else
@@ -239,6 +239,7 @@ int     IA::see_up(std::map<int, std::map<int, char> > map, Level *lv)
 
 int     IA::see_right(std::map<int, std::map<int, char> > map, Level *lv)
 {
+  wait = time_wait;
   switch (map[x][y+1])
     {
     case 'w':
@@ -272,6 +273,7 @@ int     IA::see_right(std::map<int, std::map<int, char> > map, Level *lv)
 
 int     IA::see_down(std::map<int, std::map<int, char> > map, Level *lv)
 {
+  wait = time_wait;
   switch (map[x+1][y])
     {
     case 'w':
