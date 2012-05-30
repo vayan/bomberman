@@ -60,6 +60,7 @@ int		main(void)
 
     delete bomberman;
     delete level;
+    glClearColor(0, 0, 0 ,0);
   }
   return (EXIT_SUCCESS);
 }
