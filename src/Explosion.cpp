@@ -36,11 +36,12 @@ int             Explosion::getY() const
   return(this->y);
 }
 
-void          Explosion::drawSurface(float _x, float _y, float z, float size, int mod,  float x_size, float y_size)
+void          Explosion::drawSurface(float _x, float _y, float z, float size, int mod, float x_size, float y_size)
 {
   float         offset;
 
   offset = 0.5 / 2;
+  size = size;
   switch (mod)
     {
     case 1:
