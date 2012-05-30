@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 17:27:27 2012 randy lyvet
-// Last update Wed May 30 12:13:55 2012 alexandre haulotte
+// Last update Wed May 30 12:31:29 2012 alexandre haulotte
 //
 
 #include	<iostream>
@@ -164,11 +164,11 @@ void  Bomberman::update_all_obj(std::list<AObject*>::iterator itb)
 	    if (static_cast<Player*>((*itb))->isDie())
 	      {
 		_audio->play(3);
-		std::cout << "Player have: " << static_cast<Player*>((*itb))->getScore() << std::endl;
 		if (static_cast<Player*>((*itb))->getTy() < 2)
 		  {
 		    Score scr;
 		    scr.checkScore(static_cast<Player*>((*itb))->getScore());
+		    std::cout << "View Hight Score: " << "file:///HightScore.scr.html" << std::endl;
 		  }
 		delete (*itb);
 		this->objects_.erase(itb);
