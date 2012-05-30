@@ -5,7 +5,7 @@
 // Login   <carlie_a@epitech.net>
 // 
 // Started on  Mon May  7 10:03:08 2012 anatole carlier
-// Last update Wed May 30 13:05:56 2012 anatole carlier
+// Last update Wed May 30 11:12:55 2012 anatole carlier
 //
 
 #include "IA.hh"
@@ -19,24 +19,23 @@ IA::IA(int level, Player* pl)
   this->escape = 0;
   this->prev = 'l';
   this->allies = false;
-  this->i = 0;
   switch (level)
     {
     case EASY:
       {
 	this->wait = 50;
-	this->time_wait = 75;
+	this->time_wait = 15;
       }
     case HARD:
       {
 	this->wait = 20;
-	this->time_wait = 50;
+	this->time_wait = 5;
 
       }
     case INFERNO:
       {
         this->wait = 0;
-        this->time_wait = 20;
+        this->time_wait = 0;
 	this->allies = true;
       }
     }
@@ -66,36 +65,16 @@ void	IA::IA_moves(Level *lv, std::list<AObject*> all_object)
         {
           this->escape = 0;
 	  this->wait = 150;
-	}
+	  }
       else
 	{
-	  if (i == _pl->getPower())
-	    {
-	      i = 0;
-	      prev_move(map, lv);
-	    }
-	  if (i != 0)
-	    {
-	      i++;
-	      prev_move(map, lv);
-	    }
+	  i = -1;
+	  while (++i <= _pl->getPower())
+	    prev_move(map, lv);
 	}
     }
   else if (search_bomb(map, lv) == 0)
     {
-      if (level != 0)
-	{
-	  if (map[x][y+1] == 'r' || map[x][y+2] == 'r' || map[x+1][y] == 'r' || map[x+2][y] == 'r' || map[x-1][y] == 'r' || map[x-2][y] == 'r')
-	    {
-	      _pl->ActionDropBomb(lv); escape = 1; 
-	      return;
-	    }
-	  if (map[x][y+1] == 'g' || map[x][y+2] == 'g' || map[x+1][y] == 'g' || map[x+2][y] == 'g' || map[x-1][y] == 'g' || map[x-2][y] == 'g')
-	    {
-	      _pl->ActionDropBomb(lv); escape = 1; 
-	      return;
-	    }
-	}
       if (x == 1)
 	{
 	  if (see_right(map, lv) != 0)
@@ -116,7 +95,6 @@ void	IA::IA_moves(Level *lv, std::list<AObject*> all_object)
 
 int     IA::search_bomb(std::map<int, std::map<int, char> > map, Level *lv)
 {
-  wait = time_wait;
   if (map[x][y] == 'b')
     {
       this->escape = 1;
@@ -164,7 +142,6 @@ int     IA::search_bomb(std::map<int, std::map<int, char> > map, Level *lv)
 
 void	IA::prev_move(std::map<int, std::map<int, char> > map, Level *lv)
 {
-  wait = time_wait;
   switch (prev)
     {
     case 'l':
@@ -272,11 +249,7 @@ int     IA::see_right(std::map<int, std::map<int, char> > map, Level *lv)
     case 'w':
       return (1); break;
     case 'd':
-      if (map[x][y-1] == 'f' && map[x][y+1] == 'f')
-	{
-	  _pl->ActionDropBomb(lv); see_right(map, lv); escape = 1;
-	  return (1); break;
-	}
+      _pl->ActionDropBomb(lv); escape = 1; return (1); break;
     case 'r':
       _pl->ActionDropBomb(lv);escape = 1; return (1); break;
     case 'g':
