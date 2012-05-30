@@ -103,7 +103,6 @@ void    Bomberman::init_new(void)
     getline(infile,buff);
     if (infile.good() && buff != "")
     {
-      std::cout << "Line " << buff << std::endl;
       Player *pl = new Player("null", 0, 0, 0, 0, 0, 0, 0, this->level, this, 0, bonus);
       pl = pl->unpack(buff);
       if (pl->getTy() <= 1)
@@ -220,12 +219,10 @@ void  Bomberman::InputPause()
       //std::cout << " X " << x << " Y " << y << std::endl;
     if (PAUSE_BUTTON_SAVE)
     {
-     std::cout << "SAVE PUSH" << std::endl;
      _pause->svg->SaveFile(level, objects_);
    }
    if (PAUSE_BUTTON_RESUME)
    {
-     std::cout << "RESUME PUSH" << std::endl;
      _pause->is_active = false;
      refresh_setting();
    }
@@ -391,9 +388,7 @@ std::list<AObject*>&	Bomberman::getObj()
 
 void			Bomberman::deletePlayer(const int x, const int y)
 {
-  std::cout << "Del HUD" << std::endl;
   _hud->deletePlayer(x, y);
-  std::cout << "Del HUD" << std::endl;
 }
 
 void                    Bomberman::deleteBombe(Bombe* b)
