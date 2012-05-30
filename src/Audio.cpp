@@ -5,7 +5,7 @@
 // Login   <cao_y@epitech.net>
 // 
 // Started on  Tue May 29 13:41:13 2012 yuguo cao
-// Last update Tue May 29 16:27:22 2012 yuguo cao
+// Last update Wed May 30 12:21:22 2012 yuguo cao
 //
 
 
@@ -21,8 +21,12 @@ Audio::Audio()
     _explosion.SetBuffer(_bexplosion);
   if (_bdie.LoadFromFile("assets/sound/die.wav"))
     _die.SetBuffer(_bdie);
+  if (_bdie2.LoadFromFile("assets/sound/die2.wav"))
+    _die2.SetBuffer(_bdie2);
   if (_bwin.LoadFromFile("assets/sound/win.wav"))
     _win.SetBuffer(_bwin);
+  if (_blose.LoadFromFile("assets/sound/lose.wav"))
+    _lose.SetBuffer(_blose);
   // if (!_click.LoadFromFile("loop.wav"))
   //   return EXIT_FAILURE;
 }
@@ -56,11 +60,18 @@ void		Audio::play(const int type)
       _explosion.Play();
       break;
     case (3):
-      _die.Play();
+      if (rand() % 2)
+	_die.Play();
+      else
+	_die2.Play();
       break;
     case (4):
       sleep(1);
       _win.Play();
+      break;
+    case (5):
+      sleep(1);
+      _lose.Play();
       break;
     }
 }
