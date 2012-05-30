@@ -5,7 +5,7 @@
 // Login   <carlie_a@epitech.net>
 // 
 // Started on  Mon May  7 10:03:08 2012 anatole carlier
-// Last update Wed May 30 11:12:55 2012 anatole carlier
+// Last update Wed May 30 11:42:54 2012 anatole carlier
 //
 
 #include "IA.hh"
@@ -19,6 +19,7 @@ IA::IA(int level, Player* pl)
   this->escape = 0;
   this->prev = 'l';
   this->allies = false;
+  this->i = 0;
   switch (level)
     {
     case EASY:
@@ -65,17 +66,37 @@ void	IA::IA_moves(Level *lv, std::list<AObject*> all_object)
         {
           this->escape = 0;
 	  this->wait = 150;
-	  }
+	}
       else
 	{
-	  i = -1;
-	  while (++i <= _pl->getPower())
-	    prev_move(map, lv);
+	  if (i == _pl->getPower())
+	    {
+	      i = 0;
+	      prev_move(map, lv);
+	    }
+	  if (i != 0)
+	    {
+	      i++;
+	      prev_move(map, lv);
+	    }
 	}
     }
   else if (search_bomb(map, lv) == 0)
     {
-      if (x == 1)
+      if (level == INFERNO)
+	{
+	  if (map[x][y+1] == 'r' || map[x][y+2] == 'r' || map[x+1][y] == 'r' || map[x+2][y] == 'r' || map[x-1][y] == 'r' || map[x-2][y] == 'r')
+	    {
+	      _pl->ActionDropBomb(lv); escape = 1; 
+	      return;
+	    }
+	  if (map[x][y+1] == 'g' || map[x][y+2] == 'g' || map[x+1][y] == 'g' || map[x+2][y] == 'g' || map[x-1][y] == 'g' || map[x-2][y] == 'g')
+	    {
+	      _pl->ActionDropBomb(lv); escape = 1; 
+	      return;
+	    }
+	}
+      else if (x == 1)
 	{
 	  if (see_right(map, lv) != 0)
 	    if (see_down(map, lv) != 0)
@@ -249,7 +270,11 @@ int     IA::see_right(std::map<int, std::map<int, char> > map, Level *lv)
     case 'w':
       return (1); break;
     case 'd':
-      _pl->ActionDropBomb(lv); escape = 1; return (1); break;
+      if (map[x][y-1] == 'f' && map[x][y+1] == 'f')
+	{
+	  _pl->ActionDropBomb(lv); see_right(map, lv); escape = 1;
+	  return (1); break;
+	}
     case 'r':
       _pl->ActionDropBomb(lv);escape = 1; return (1); break;
     case 'g':
