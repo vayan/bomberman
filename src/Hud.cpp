@@ -5,7 +5,7 @@
 // Login   <cao_y@epitech.net>
 // 
 // Started on  Wed May 23 11:03:56 2012 yuguo cao
-// Last update Wed May 30 11:16:33 2012 randy lyvet
+// Last update Wed May 30 11:43:23 2012 yuguo cao
 //
 
 #include "Hud.hh"
@@ -15,10 +15,6 @@ Hud::Hud()
 {
   _player1 = NULL;
   _player2 = NULL;
-  // _life = gdl::Image::load("assets/img/life.png");
-  // _speed = gdl::Image::load("assets/img/speed.png");
-  // _power = gdl::Image::load("assets/img/power.png");
-  // _bombMax = gdl::Image::load("assets/img/bombe.png");
   _stats.push_back(gdl::Image::load("assets/img/life.png"));
   _stats.push_back(gdl::Image::load("assets/img/speed.png"));
   _stats.push_back(gdl::Image::load("assets/img/power.png"));
@@ -30,26 +26,17 @@ Hud::Hud()
     Hud::~Hud()
     {}
 
-  void		Hud::draw()
-  {
-    Settings conf;
+void		Hud::draw()
+{
+  Settings conf;
 
-    mode2d();
-    drawImage(_back, 0, 0);
-
-    if (conf.GetNbPlayers() == 2)
-     drawImage(_back2, 1315, 0);
-
-    // _back.bind();
-    // glBegin(GL_QUADS);
-    // glVertex2i(0, 0);
-    // glVertex2i(300, 0);
-    // glVertex2i(300, 900);
-    // glVertex2i(0, 900);
-    // glEnd();
-    printPlayer();
-    mode3d();
-  }
+  mode2d();
+  drawImage(_back, 0, 0);
+  if (conf.GetNbPlayers() == 2)
+    drawImage(_back2, 1315, 0);
+  printPlayer();
+  mode3d();
+}
 
 void		Hud::printStat(float nb, int player, int line)
 {
@@ -77,7 +64,7 @@ void		Hud::printStat(float nb, int player, int line)
     }
   if (player == 0)
     {
-      while (i < nb)
+      while (i < nb && i < 20)
 	{
 	  drawImage(_stats[line], 8 + i * 27 - (i / 10) * 27 * 10, 850 - (i / 10) * 27 - margin);
 	  i++;
@@ -128,9 +115,6 @@ void		Hud::printPlayer()
     img.bind();
     glBegin(GL_QUADS);
     glTexCoord2f(0, 1); glVertex2d(x, y);
-    // glTexCoord2f(1, 1); glVertex2d(50 + x, y);
-    // glTexCoord2f(1, 0); glVertex2d(50 + x, 50 + y);
-    // glTexCoord2f(0, 0); glVertex2d(x, 50 + y);
     glTexCoord2f(1, 1); glVertex2d(img.getWidth() + x, y);
     glTexCoord2f(1, 0); glVertex2d(img.getWidth() + x, img.getHeight() + y);
     glTexCoord2f(0, 0); glVertex2d(x, img.getHeight() + y);

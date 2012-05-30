@@ -5,7 +5,7 @@
 // Login   <cao_y@epitech.net>
 // 
 // Started on  Fri Apr 27 12:36:02 2012 yuguo cao
-// Last update Fri May 25 16:11:11 2012 yuguo cao
+// Last update Wed May 30 11:39:17 2012 yuguo cao
 //
 
 #include "Level.hh"
@@ -118,50 +118,47 @@ void					Level::placePlayer(int nbPlayers, int nbIas)
   int					tmp_x = 1;
   int					tmp_y = 1;
   char					player = 'r';
+  int					dir = 0;
 
   if (rep < 4)
     std::cout << "Pas jouable." << std::endl;
   //throw(new Errur("Too many players for this map."));
   std::cout << per << " " << rep << std::endl;
   while (nbTot > 0)
-  {
-    if (!(i % rep))
     {
-     if (i > _width - 4)
-     {
-       tmp_x = _width - 2;
-       tmp_y = i - (_width - 4);
-       if (i > (_width + _height) - 6)
-       {
-        tmp_x = _width - (i - (_width + _height - 6)) - 2;
-        tmp_y = _height - 2;
-        if (i > (2 * _width + _height - 10))
-        {
-          tmp_x = 1;
-          tmp_y = _height - (i - ((2 * _width + _height - 10))) - 1;
-        }
-      }
+      if (!(i % rep))
+	{
+	  if (i > _width - 4)
+	    {
+	      tmp_x = _width - 2;
+	      tmp_y = i - (_width - 4);
+	      if (i > (_width + _height) - 6)
+		{
+		  tmp_x = _width - (i - (_width + _height - 6)) - 2;
+		  tmp_y = _height - 2;
+		  if (i > (2 * _width + _height - 10))
+		    {
+		      tmp_x = 1;
+		      tmp_y = _height - (i - ((2 * _width + _height - 10))) - 1;
+		    }
+		}
+	    }
+	  else
+	    tmp_x = i + 1;
+	  _map[tmp_x][tmp_y] = player;
+	  std::cout << i << " " << tmp_x << " " << tmp_y << std::endl;
+	  if (player == 'r' && nbPlayers == 2)
+	    player = 'g';
+	  else if (player == 'g' || nbPlayers == 1)
+	    player = 'i';
+	  (tmp_x + 1 < _height - 1) ? _map[tmp_x + 1][tmp_y] = 'f' : _map[0][0] = 'w';
+	  (tmp_x - 1 > 0) ? _map[tmp_x - 1][tmp_y] = 'f' : _map[0][0] = 'w';
+	  (tmp_y + 1 < _width - 1) ? _map[tmp_x][tmp_y + 1] = 'f' : _map[0][0] = 'w';
+	  (tmp_y - 1 > 0) ? _map[tmp_x][tmp_y - 1] = 'f' : _map[0][0] = 'w';
+	  nbTot--;
+	}
+      i++;
     }
-    else
-     tmp_x = i + 1;
-   _map[tmp_x][tmp_y] = player;
-   std::cout << i << " " << tmp_x << " " << tmp_y << std::endl;
-   if (player == 'r' && nbPlayers == 2)
-     player = 'g';
-   else if (player == 'g' || nbPlayers == 1)
-     player = 'i';
-   (_map[tmp_x + 1][tmp_y] != 'w') ? _map[tmp_x + 1][tmp_y] = 'f' : _map[0][0] = 'w';
-   (_map[tmp_x - 1][tmp_y] != 'w') ? _map[tmp_x - 1][tmp_y] = 'f' : _map[0][0] = 'w';
-   (_map[tmp_x][tmp_y + 1] != 'w') ? _map[tmp_x][tmp_y + 1] = 'f' : _map[0][0] = 'w';
-   (_map[tmp_x][tmp_y - 1] != 'w') ? _map[tmp_x][tmp_y - 1] = 'f' : _map[0][0] = 'w';
-	  // _map[tmp_x + 1][tmp_y] = 'f';
-	  // _map[tmp_x - 1][tmp_y] = 'f';
-	  // _map[tmp_x][tmp_y + 1] = 'f';
-	  // _map[tmp_x][tmp_y - 1] = 'f';
-   nbTot--;
- }
- i++;
-}
 }
 
 void					Level::placeHole()
