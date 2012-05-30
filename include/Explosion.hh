@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Sat May 26 13:08:27 2012 randy lyvet
-// Last update Tue May 29 18:08:50 2012 alexandre haulotte
+// Last update Wed May 30 11:55:46 2012 randy lyvet
 //
 
 #ifndef		_EXPLOSION_HH_
@@ -38,6 +38,7 @@ public :
   void		animExplose();
   void		drawAnimX(int _x);
   void		drawAnimY(int _y);
+
   Explosion(int up, int down, int left, int right, int x, int y);
   ~Explosion();
 };

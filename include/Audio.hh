@@ -5,14 +5,15 @@
 // Login   <cao_y@epitech.net>
 // 
 // Started on  Tue May 29 13:41:28 2012 yuguo cao
-// Last update Tue May 29 16:27:01 2012 yuguo cao
+// Last update Wed May 30 11:41:27 2012 randy lyvet
 //
 
 #ifndef		__AUDIO__
 # define	__AUDIO__
 
-#include <iostream>
-#include <SFML/Audio.hpp>
+#include 	<iostream>
+
+#include 	<SFML/Audio.hpp>
 
 enum AUDIO
   {
