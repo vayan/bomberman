@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Tue May  8 22:44:37 2012 randy lyvet
-// Last update Wed May 30 13:32:05 2012 alexandre haulotte
+// Last update Wed May 30 14:01:36 2012 randy lyvet
 
 #ifndef TEXTURES_HH_//
 # define TEXTURES_HH_
@@ -16,8 +16,6 @@
 class		Texture
 {
 public:
-  Texture();
-  ~Texture();
   gdl::Image    Floor_;
   gdl::Image    Cube_;
   gdl::Image    Wall_;
@@ -28,6 +26,9 @@ public:
   gdl::Image    Pod_;
   gdl::Image    Nbd_;
   gdl::Image    Spd_;
+
+  Texture();
+  ~Texture();
 };
 
 #endif /* !TEXTURES_HH_ */

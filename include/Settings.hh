@@ -14,36 +14,39 @@
 
 class Settings {
 public:
-	enum Difficulty {  
-		Easy,
-		Hard,
-		Inferno
-	};
-public:
-				Settings();
-				~Settings();
-	Difficulty 	GetDifficulty();
-	void 		aff_settings();
-	int		   	GetNb_AI();
-	int		   	GetMapx();
-	int		   	GetMapY();
-	int 		GetNbPlayers();
-	int 		GetSVG();
-	void 		SetSVG(int rest);
-	void 		SetDifficulty(Difficulty);
-	void		SetNb_AI(int);
-	void		SetMapx(int);
-	void		SetMapY(int);
-	void		SetNbPlayers(int);
-	void	   	RefreshSettings();
+  enum Difficulty
+    {
+      Easy,
+      Hard,
+      Inferno
+    };
+
+
+  Difficulty	GetDifficulty();
+  void 		aff_settings();
+  int		GetNb_AI();
+  int		GetMapx();
+  int		GetMapY();
+  int 		GetNbPlayers();
+  int 		GetSVG();
+  void 		SetSVG(int rest);
+  void 		SetDifficulty(Difficulty);
+  void		SetNb_AI(int);
+  void		SetMapx(int);
+  void		SetMapY(int);
+  void		SetNbPlayers(int);
+  void	   	RefreshSettings();
+
+  Settings();
+  ~Settings();
 private:
-	std::string filename;
-	Difficulty 	diffuclt;
-	int 		nb_ai;
-	int			map_x;
-	int			map_y;
-	int 		nb_players;
-	int 		restore_svg;
+  std::string	filename;
+  Difficulty 	diffuclt;
+  int 		nb_ai;
+  int		map_x;
+  int		map_y;
+  int 		nb_players;
+  int 		restore_svg;
 };
 
 #endif
