@@ -5,15 +5,14 @@
 // Login   <cao_y@epitech.net>
 // 
 // Started on  Tue May 29 13:41:28 2012 yuguo cao
-// Last update Wed May 30 11:41:27 2012 randy lyvet
+// Last update Wed May 30 12:30:14 2012 yuguo cao
 //
 
 #ifndef		__AUDIO__
 # define	__AUDIO__
 
-#include 	<iostream>
-
-#include 	<SFML/Audio.hpp>
+#include <iostream>
+#include <SFML/Audio.hpp>
 
 enum AUDIO
   {
@@ -22,6 +21,7 @@ enum AUDIO
     EXPLOSION,
     DIE,
     WIN,
+    LOSE,
     CLICK
   };
 
@@ -32,13 +32,17 @@ private:
   sf::SoundBuffer	_bputBomb;
   sf::SoundBuffer	_bexplosion;
   sf::SoundBuffer	_bdie;
+  sf::SoundBuffer	_bdie2;
   sf::SoundBuffer	_bwin;
+  sf::SoundBuffer	_blose;
   sf::SoundBuffer	_bclick;
   sf::Sound		_background;
   sf::Sound		_putBomb;
   sf::Sound		_explosion;
   sf::Sound		_die;
+  sf::Sound		_die2;
   sf::Sound		_win;
+  sf::Sound		_lose;
   sf::Sound		_click;
 
 public:
