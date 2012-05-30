@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Wed May  2 12:29:56 2012 alexandre haulotte
-// Last update Wed May 30 11:07:16 2012 randy lyvet
+// Last update Wed May 30 11:42:44 2012 alexandre haulotte
 //
 
 // 0 : Gauche
@@ -15,6 +15,7 @@
 
 #include	"Bombe.hh"
 #include	"Utils.hh"
+
 
 void		Bombe::initialize()
 {
@@ -47,7 +48,7 @@ void		Bombe::draw()
 Bombe::Bombe(Player *j, Bonus *bon, Level *lvl)
   :AObject(), powa(j->getPower()), lvl(lvl), bonus(bon)
 {
-
+  score = 0;
   x = j->getX();
   y = j->getY();
   _type = 3;
@@ -58,6 +59,7 @@ Bombe::Bombe(Player *j, Bonus *bon, Level *lvl)
 Bombe::Bombe(int &_x, int &_y, int &_powa)
   :AObject(), powa(_powa), lvl(NULL)
 {
+  score = 0;
   x = _x;
   y = _y;
   _type = 3;
@@ -152,15 +154,20 @@ bool	Bombe::bang(int dir, bool state, std::list<AObject*> &obj, int actBang)
 		  if ((*tmp)->_type == 3 || (*tmp)->_type == 4)
 		    {
 		      static_cast<Bombe*>((*tmp))->time(true);
+		      score += 3;
 		    }
 		  else
 		    {
 		      delete (*tmp);
 		      obj.erase(tmp);
+		      score += 1;
 		    }
 		}
 	      else
-		static_cast<Player*>((*tmp))->die();
+		{
+		  static_cast<Player*>((*tmp))->die();
+		  score += 10;
+		}
 	      lvl->setCase(x_b, y_b, 'f');
 	      if (type != 0)
 		return (true);
@@ -288,3 +295,5 @@ Bombe::~Bombe()
   std::cout << "Bombe Détruite" << std::endl;
 }
 
+int		Bombe::scoring()
+{ return (score);}

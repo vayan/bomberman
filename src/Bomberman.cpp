@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 17:27:27 2012 randy lyvet
-// Last update Tue May 29 15:59:39 2012 yuguo cao
+// Last update Wed May 30 11:44:57 2012 alexandre haulotte
 //
 
 #include	<iostream>
@@ -80,7 +80,7 @@ void    Bomberman::init_new(void)
        case 'd':
        {
          Cube *cube_f = new Cube(x, y, 1, texture_, 1);
-         this->objects_.push_back(cube_f);         
+         this->objects_.push_back(cube_f);
        }
        break;
        default :
@@ -164,6 +164,7 @@ void  Bomberman::update_all_obj(std::list<AObject*>::iterator itb)
 	    if (static_cast<Player*>((*itb))->isDie())
 	      {
 		_audio->play(3);
+		std::cout << "Player have: " << static_cast<Player*>((*itb))->getScore() << std::endl;
 		delete (*itb);
 		this->objects_.erase(itb);
 		itb = this->objects_.begin();

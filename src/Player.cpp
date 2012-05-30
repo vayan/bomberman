@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Tue May 29 15:09:13 2012 alexandre haulotte
-// Last update Tue May 29 15:12:06 2012 alexandre haulotte
+// Last update Wed May 30 11:42:04 2012 alexandre haulotte
 //
 
 #include		"Player.hh"
@@ -41,7 +41,8 @@ Player::Player(std::string _name, int _x, int _y, int _id, int _life, float _spe
   clock_mvt.play();
   x 		= _x;
   y 		= _y;
-  (void) _speed;
+  score		= 0;
+  _speed = _speed;
   x_pix 	= x * 10;
   y_pix 	= y * 10;
   name 		= _name;
@@ -143,6 +144,7 @@ void			Player::update(gdl::GameClock const &clock, gdl::Input &_input)
 	      static_cast<Bombe*>((*itb))->explose(this->game->getObj());
 	      game->deleteBombe(static_cast<Bombe*>(*itb));
 	      this->bombes.erase(itb);
+	      score += static_cast<Bombe*>(*itb)->scoring();
 	      delete (*itb);
 	      itb = this->bombes.begin();
 	    }
@@ -410,6 +412,7 @@ if (o_x != x || o_y != y)
 it = scanBonus(all_object);
 if (it != all_object.end())
 {
+  score += 5;
   switch (static_cast<BonusBox*>((*it))->getType())
   {
    case 0:
@@ -461,4 +464,4 @@ void Player::setAction(int act) {action = act;}
 void Player::setTimeBomb(int timebomb) {time_bombe = timebomb;}
 void Player::setTime_mvt(int tmvt) {time_mvt = tmvt;}
 void Player::setTy(int ti) { ty = ti;}
-
+double Player::getScore() const {return (score);}

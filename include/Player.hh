@@ -67,6 +67,7 @@ public:
   ////////POUR LES SAUVEGARDES////////////////
   std::string		&pack();
   Player		    *unpack(std::string&);
+  double		getScore() const;
   ////////////////////////////////////////////
 
   Player();
@@ -109,6 +110,7 @@ private:
   IA			*_IA;
   Bonus			*bon;
   int ty;
+  double		score;
 };
 
 #endif

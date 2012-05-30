@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Wed May  2 12:30:19 2012 alexandre haulotte
-// Last update Tue May 29 15:22:55 2012 alexandre haulotte
+// Last update Wed May 30 11:39:15 2012 alexandre haulotte
 //
 
 #ifndef	__BOMBE_HH__
@@ -29,7 +29,7 @@ class Bombe : public AObject
   int		timer;
   Level	*lvl;
   Bonus	*bonus;
-
+  int	score;
 public:
   Bombe(Player *j, Bonus *bon, Level *lvl);
   Bombe(int &_x, int &_y, int &_powa);
@@ -49,6 +49,7 @@ public:
   static Bombe		*unpack(std::string str);
   void                  drawSurface(float x, float y, float z, float size, int mod);
   int			checkPath(int, int);
+  int			scoring();
 };
 
 #endif
