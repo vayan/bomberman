@@ -210,7 +210,7 @@ void  Bomberman::InputPause()
   {
     _pause->is_active = false;
     refresh_setting();
-    usleep(60000);
+    usleep(500000);
   }
   else if (input_.isMouseButtonDown(gdl::Mouse::Left) == true)
   {
@@ -314,7 +314,7 @@ void		Bomberman::update()
       if (input_.isKeyDown(gdl::Keys::P) == true)
       {
         _pause->is_active = true;
-        usleep(60000);
+        usleep(500000);
       }
       update_all_obj(itb);
     }
