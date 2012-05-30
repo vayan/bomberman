@@ -294,7 +294,7 @@ int                   Bombe::checkPath(int direction, int power)
 
 Bombe::~Bombe()
 {
-  std::cout << "Bombe Détruite" << std::endl;
+  //std::cout << "Bombe Détruite" << std::endl;
 }
 
 int		Bombe::scoring()

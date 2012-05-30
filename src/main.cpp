@@ -46,14 +46,10 @@ int		main(void)
   if (conf.GetSVG() == 1)
   {
     Save sv;
-    std::cout << "Reload from save " << sv.GetLvl() << std::endl;
     level = level->unpack(sv.GetLvl());
   }
   else
-  {
-    std::cout << "new game " << std::endl;
     level->generateMap(conf);
-  }
   Bomberman	*bomberman = new Bomberman(level);
   bomberman->run();
 

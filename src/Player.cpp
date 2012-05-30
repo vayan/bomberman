@@ -93,10 +93,8 @@ Player::Player(std::string _name, int _x, int _y, int _id, int _life, float _spe
 
 Player::~Player()
 {
-  std::cout << "p delete" << std::endl;
   if (!bombes.empty())
   {
-    std::cout << "p delete" << std::endl;
     std::list<AObject*>::iterator itb = bombes.begin();
     while (itb != this->bombes.end())
     {
@@ -104,9 +102,7 @@ Player::~Player()
      itb++;
    }
  }
- std::cout << "p delete" << std::endl;
  game->deletePlayer(x, y);
- std::cout << "p delete" << std::endl;
 }
 
 void			Player::initialize(void)
@@ -137,29 +133,29 @@ void			Player::update(gdl::GameClock const &clock, gdl::Input &_input)
   input = &_input;
   ScanAllAction(lvl, game->getObj());
   if (bombes.size() > 0)
+  {
+    std::list<AObject*>::iterator itb = bombes.begin();
+    while (!bombes.empty() && itb != this->bombes.end())
     {
-      std::list<AObject*>::iterator itb = bombes.begin();
-      while (!bombes.empty() && itb != this->bombes.end())
-	{
-	  if (static_cast<Bombe*>((*itb))->time(false))
-	    {
-	      lvl->setCase((*itb)->getX(), (*itb)->getY(), 'f');
-	      static_cast<Bombe*>((*itb))->explose(this->game->getObj());
-	      game->deleteBombe(static_cast<Bombe*>(*itb));
-	      this->bombes.erase(itb);
-	      score += static_cast<Bombe*>(*itb)->scoring();
-	      delete (*itb);
-	      itb = this->bombes.begin();
-	    }
-	  if (!bombes.empty())
-	    {
-	      itb++;
-	    }
-	}
-    }
+     if (static_cast<Bombe*>((*itb))->time(false))
+     {
+       lvl->setCase((*itb)->getX(), (*itb)->getY(), 'f');
+       static_cast<Bombe*>((*itb))->explose(this->game->getObj());
+       game->deleteBombe(static_cast<Bombe*>(*itb));
+       this->bombes.erase(itb);
+       score += static_cast<Bombe*>(*itb)->scoring();
+       delete (*itb);
+       itb = this->bombes.begin();
+     }
+     if (!bombes.empty())
+     {
+       itb++;
+     }
+   }
+ }
   //	printMap(lvl);
-  nb_bomb = bomb_max - bombes.size();
-  this->model_.update(clock);
+ nb_bomb = bomb_max - bombes.size();
+ this->model_.update(clock);
 }
 
 void			Player::draw(void)
@@ -426,8 +422,8 @@ if (it != all_object.end())
    bomb_max++;
    break;
    case 2:
-     if (speed > 1)
-       speed--;
+   if (speed > 1)
+     speed--;
    break;
    case 4:
      if (power > 1)
