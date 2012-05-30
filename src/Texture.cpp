@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Tue May  8 22:51:08 2012 randy lyvet
-// Last update Tue May 29 16:01:26 2012 alexandre haulotte
+// Last update Wed May 30 13:43:27 2012 alexandre haulotte
 //
 
 #include	"Texture.hh"
@@ -19,6 +19,9 @@ Texture::Texture()
   Po_ = gdl::Image::load("assets/texture/power.png");
   Nb_ = gdl::Image::load("assets/texture/bombup.png");
   Sp_ = gdl::Image::load("assets/texture/speed.jpeg");
+  Pod_ = gdl::Image::load("assets/texture/power-.png");
+  Nbd_ = gdl::Image::load("assets/texture/bombdown.png");
+  Spd_ = gdl::Image::load("assets/texture/speed-.jpeg");
 }
 
 Texture::~Texture()

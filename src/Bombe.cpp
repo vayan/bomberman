@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Wed May  2 12:29:56 2012 alexandre haulotte
-// Last update Wed May 30 11:42:44 2012 alexandre haulotte
+// Last update Wed May 30 13:27:18 2012 alexandre haulotte
 //
 
 // 0 : Gauche
@@ -111,78 +111,87 @@ bool	Bombe::bang(int dir, bool state, std::list<AObject*> &obj, int actBang)
   char	c;
 
   if (state)
-  {
-    tmp = obj.end();
-    x_b = x;
-    y_b = y;
-    switch (dir)
     {
-     case 0:
-     x_b -= actBang;
-     break;
-     case 1:
-     x_b += actBang;
-     break;
-     case 2:
-     y_b -= actBang;
-     break;
-     case 3:
-     y_b += actBang;
-     break;
-     default:
-     break;
-   }
-   tmp = getObj(obj, x_b, y_b);
-   if (tmp == obj.end())
-   {
-     return (true);
-   }
-   else
-   {
-     if ((*tmp)->_type != 1)
-     {
-       type = (*tmp)->_type;
-       if ((*tmp)->_type != 2)
-       {
-        if ((*tmp)->_type == 3 || (*tmp)->_type == 4)
-        {
-          static_cast<Bombe*>((*tmp))->time(true);
-          score += 3;
-        }
-        else
-        {
-          delete (*tmp);
-          obj.erase(tmp);
-          score += 1;
-        }
-      }
+      tmp = obj.end();
+      x_b = x;
+      y_b = y;
+      switch (dir)
+	{
+	case 0:
+	  x_b -= actBang;
+	  break;
+	case 1:
+	  x_b += actBang;
+	  break;
+	case 2:
+	  y_b -= actBang;
+	  break;
+	case 3:
+	  y_b += actBang;
+	  break;
+	default:
+	  break;
+	}
+      tmp = getObj(obj, x_b, y_b);
+      if (tmp == obj.end())
+	{
+	  return (true);
+	}
       else
-      {
-        static_cast<Player*>((*tmp))->die();
-        score += 10;
-      }
-      lvl->setCase(x_b, y_b, 'f');
-      if (type != 0)
-        return (true);
-      c = bonus->getBonus(x_b, y_b);
-      switch (c)
-      {
-        case 'n':
-        obj.push_back( bonus->createBonus(x_b, y_b, 1, 3));
-        break;
-        case 'p':
-        obj.push_back( bonus->createBonus(x_b, y_b, 1, 1));
-        break;
-        case 's':
-        obj.push_back( bonus->createBonus(x_b, y_b, 1, 2));
-        break;
-        default:
-        break;
-      }
+	{
+	  if ((*tmp)->_type != 1)
+	    {
+	      type = (*tmp)->_type;
+	      if ((*tmp)->_type != 2)
+		{
+		  if ((*tmp)->_type == 3 || (*tmp)->_type == 4)
+		    {
+		      static_cast<Bombe*>((*tmp))->time(true);
+		      score += 3;
+		    }
+		  else
+		    {
+		      delete (*tmp);
+		      obj.erase(tmp);
+		      score += 1;
+		    }
+		}
+	      else
+		{
+		  static_cast<Player*>((*tmp))->die();
+		  score += 10;
+		}
+	      lvl->setCase(x_b, y_b, 'f');
+	      if (type != 0)
+		return (true);
+	      c = bonus->getBonus(x_b, y_b);
+	      switch (c)
+		{
+		case 'n':
+		  obj.push_back( bonus->createBonus(x_b, y_b, 1, 3));
+		  break;
+		case 'p':
+		  obj.push_back( bonus->createBonus(x_b, y_b, 1, 1));
+		  break;
+		case 's':
+		  obj.push_back( bonus->createBonus(x_b, y_b, 1, 2));
+		  break;
+		case 'o':
+		  obj.push_back( bonus->createBonus(x_b, y_b, 1, 4));
+		  break;
+		case 'q':
+		  obj.push_back( bonus->createBonus(x_b, y_b, 1, 5));
+		  break;
+		case 't':
+		  obj.push_back( bonus->createBonus(x_b, y_b, 1, 6));
+		  break;
+		default:
+		  break;
+		}
+	    }
+	}
     }
-  }
-}
-return (false);
+  return (false);
 }
 
 void	Bombe::explose(std::list<AObject*> &obj)

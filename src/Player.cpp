@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Tue May 29 15:09:13 2012 alexandre haulotte
-// Last update Wed May 30 11:42:04 2012 alexandre haulotte
+// Last update Wed May 30 13:46:56 2012 alexandre haulotte
 //
 
 #include		"Player.hh"
@@ -428,6 +428,17 @@ if (it != all_object.end())
    case 2:
      if (speed > 1)
        speed--;
+   break;
+   case 4:
+     if (power > 1)
+       power--;
+   break;
+  case 5:
+     if (bomb_max > 1)
+       bomb_max--;
+     break;
+   case 3:
+       speed++;
    break;
    default:
    break;
