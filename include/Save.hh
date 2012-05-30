@@ -10,17 +10,18 @@
 #include "Object.hh"
 
 
-class Save 
+class Save
 {
 public:
-		Save();
-		~Save();
-void 	SaveFile(Level *lvl, std::list<AObject*> objects_);
-std::string GetLvl();
-std::string GetFilename();
-void	restore();
+  Save();
+  ~Save();
+
+  void 		SaveFile(Level *lvl, std::list<AObject*> objects_);
+  std::string	GetLvl();
+  std::string	GetFilename();
+  void		restore();
 private:
-	std::string filename;
+  std::string	filename;
 
 };
 

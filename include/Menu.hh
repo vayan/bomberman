@@ -19,7 +19,7 @@
 #include 	"Pause.hh"
 #include 	"UI.hh"
 
-#define SINGLE_PLAYER_BUTTON	x >= 53  && x <= 283 && y >= 346 && y <= 413
+#define SINGLE_PLAYER_BUTTON		x >= 53  && x <= 283 && y >= 346 && y <= 413
 #define TWO_PLAYER_BUTTON 		x >= 500 && x <= 730 && y >= 345 && y <= 410
 #define SETTING_BUTTON 			x >= 52  && x <= 280 && y >= 477 && y <= 540
 #define EXIT_BUTTON 			x >= 500 && x <= 727 && y >= 477 && y <= 544
@@ -32,7 +32,7 @@
 #define SAVE_BUTTON 			x >= 624 && x <= 773 && y >= 532 && y <= 575
 #define SMALL_BUTTON			x >= 325 && x <= 428 && y >= 444 && y <= 470
 #define MEDIUM_BUTTON			x >= 448 && x <= 547 && y >= 444 && y <= 470
-#define BIG_BUTTON				x >= 568 && x <= 667 && y >= 444 && y <= 470
+#define BIG_BUTTON			x >= 568 && x <= 667 && y >= 444 && y <= 470
 
 class Pause;
 

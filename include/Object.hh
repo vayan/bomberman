@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 17:23:25 2012 randy lyvet
-// Last update Wed May 23 12:40:19 2012 alexandre haulotte
+// Last update Wed May 30 13:57:27 2012 randy lyvet
 
 //-1 floor
 // 0 destructible
@@ -69,6 +69,7 @@ public:
   virtual int		getX() const;
   virtual int		getY() const;
   int			getType() const;
+
   BonusBox(float x, float y, float z, gdl::Image tex, int ty_);
   ~BonusBox(void);
 };
