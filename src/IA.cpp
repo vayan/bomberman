@@ -5,7 +5,7 @@
 // Login   <carlie_a@epitech.net>
 // 
 // Started on  Mon May  7 10:03:08 2012 anatole carlier
-// Last update Wed May 30 12:37:23 2012 anatole carlier
+// Last update Wed May 30 13:03:05 2012 anatole carlier
 //
 
 #include "IA.hh"
@@ -24,20 +24,17 @@ IA::IA(int level, Player* pl)
     {
     case EASY:
       {
-	std::cout << "Easy!";
 	this->wait = 50;
 	this->time_wait = 75;
       }
     case HARD:
       {
-	std::cout << "Hard...";
 	this->wait = 20;
 	this->time_wait = 50;
 
       }
     case INFERNO:
       {
-	std::cout << "Inferno!!!!!!!";
         this->wait = 0;
         this->time_wait = 20;
 	this->allies = true;
