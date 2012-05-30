@@ -3,11 +3,12 @@
 
 EndGame::EndGame()
 {
-	img_EndScreen = gdl::Image::load("assets/img/endgamescreen.png");
-	img_P1Win = gdl::Image::load("assets/img/p1win.png");
-	img_P2Win = gdl::Image::load("assets/img/p2win.png");
-	img_ULoose = gdl::Image::load("assets/img/youloose.png");
-	img_UWin = gdl::Image::load("assets/img/youwin.png");
+  state = 0;
+  img_EndScreen = gdl::Image::load("assets/img/endgamescreen.png");
+  img_P1Win = gdl::Image::load("assets/img/p1win.png");
+  img_P2Win = gdl::Image::load("assets/img/p2win.png");
+  img_ULoose = gdl::Image::load("assets/img/youloose.png");
+  img_UWin = gdl::Image::load("assets/img/youwin.png");
 }
 
 EndGame::~EndGame()

@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 17:27:27 2012 randy lyvet
-// Last update Wed May 30 12:31:29 2012 alexandre haulotte
+// Last update Wed May 30 14:42:14 2012 yuguo cao
 //
 
 #include	<iostream>
@@ -303,9 +303,11 @@ void		Bomberman::update()
     sp = sp + 1;
     camera_.update(gameClock_, input_);
     std::list<AObject*>::iterator itb = this->objects_.begin();
+    if (!_EndGame->state)
+      check_death();
     if (_pause->is_active == true)
       InputPause();
-    else if (check_death() == 1)
+    else if (_EndGame->state)
       InputEnd();
     else 
     {
@@ -337,7 +339,7 @@ void		Bomberman::draw(void)
   std::list<AObject*>::iterator itb = this->objects_.begin();
   if (_pause->is_active == true)
     _pause->draw();
-  else if (check_death() == 1)
+  else if (_EndGame->state)
    _EndGame->draw();
  else
  {

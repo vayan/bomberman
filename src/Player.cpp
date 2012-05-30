@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Tue May 29 15:09:13 2012 alexandre haulotte
-// Last update Wed May 30 14:21:35 2012 alexandre haulotte
+// Last update Wed May 30 14:32:55 2012 yuguo cao
 //
 
 #include		"Player.hh"
@@ -525,6 +525,7 @@ int   Player::getTy() { return (ty); }
 float 	Player::getSpeed() const { return (speed); }
 std::string	Player::getName() const { return (name); } 
 int		Player::getBomb() const { return (nb_bomb); }
+bool		Player::getMultiBomb() const { return (multiBombe); }
 IA    *Player::getIA(){ return (_IA); }
 void Player::setX(int _x) { x = _x; }
 void Player::setY(int _y) { y = _y; }

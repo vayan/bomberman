@@ -30,6 +30,7 @@ public:
   int 			getBombMax() const;
   virtual int		getX() const;
   virtual int		getY() const;
+  bool			getMultiBomb() const;
   IA        *getIA();
   int       getTy();
   char			getLvlCase(int _x, int _y) const;

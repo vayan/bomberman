@@ -5,7 +5,7 @@
 // Login   <cao_y@epitech.net>
 // 
 // Started on  Wed May 23 11:03:56 2012 yuguo cao
-// Last update Wed May 30 11:43:23 2012 yuguo cao
+// Last update Wed May 30 14:35:40 2012 yuguo cao
 //
 
 #include "Hud.hh"
@@ -19,6 +19,7 @@ Hud::Hud()
   _stats.push_back(gdl::Image::load("assets/img/speed.png"));
   _stats.push_back(gdl::Image::load("assets/img/power.png"));
   _stats.push_back(gdl::Image::load("assets/img/bombe.png"));
+  _stats.push_back(gdl::Image::load("assets/img/line.png"));
   _back = gdl::Image::load("assets/img/player1_hud.png");
   _back2 = gdl::Image::load("assets/img/player2_hud.png");
 }
