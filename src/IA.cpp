@@ -5,7 +5,7 @@
 // Login   <carlie_a@epitech.net>
 // 
 // Started on  Mon May  7 10:03:08 2012 anatole carlier
-// Last update Wed May 30 11:03:41 2012 anatole carlier
+// Last update Wed May 30 11:12:55 2012 anatole carlier
 //
 
 #include "IA.hh"
@@ -75,10 +75,14 @@ void	IA::IA_moves(Level *lv, std::list<AObject*> all_object)
     }
   else if (search_bomb(map, lv) == 0)
     {
-      if ((y == (lv->getWidth() - 3) || (y == (lv->getWidth() - 2))) && x < lv->getHeight() - 3 && prev != 'u')
+      if (x == 1)
+	{
+	  if (see_right(map, lv) != 0)
+	    if (see_down(map, lv) != 0)
+	      see_left(map, lv);
+	}
+      else if (y == (lv->getWidth() - 2) && x < 3)
 	see_down(map, lv);
-      else if (x == 1)
-	see_right(map, lv);
       else
 	{
 	  if (see_left(map, lv) != 0)
