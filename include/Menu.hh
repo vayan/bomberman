@@ -30,7 +30,7 @@
 #define HARD_BUTTON 			x >= 446 && x <= 548 && y >= 400 && y <= 425
 #define INFERNO_BUTTON 			x >= 566 && x <= 666 && y >= 400 && y <= 425
 #define SAVE_BUTTON 			x >= 624 && x <= 773 && y >= 532 && y <= 575
-#define SMALL_BUTTON			x >= 325 && x <= 428 && y >= 444 && y <= 470		
+#define SMALL_BUTTON			x >= 325 && x <= 428 && y >= 444 && y <= 470
 #define MEDIUM_BUTTON			x >= 448 && x <= 547 && y >= 444 && y <= 470
 #define BIG_BUTTON				x >= 568 && x <= 667 && y >= 444 && y <= 470
 
@@ -39,36 +39,40 @@ class Pause;
 class Menu : public gdl::Game
 {
 public:
-	Menu();
-	~Menu();
-	void 				MainMenu();
-	void 				MainMenu_input();
-	void 				SettingMenu();
-	void 				SettingMenu_input();
-	void      			initialize(void);
-	void     	 		draw(void);
-	void				unload(void);
-	void				update(void);
-	void				PutSelect_difficulty();
-	void 				PutSelect_size();
-	void 				DrawAIicon();
-	virtual int			getX() const { return (0); }
-	virtual int 		getY() const { return (0); }
-	void 				save();
+  virtual int			getX() const { return (0); }
+  virtual int 			getY() const { return (0); }
+
+  void 				MainMenu();
+  void 				MainMenu_input();
+  void 				SettingMenu();
+  void 				SettingMenu_input();
+  void      			initialize(void);
+  void     	 		draw(void);
+  void				unload(void);
+  void				update(void);
+  void				PutSelect_difficulty();
+  void 				PutSelect_size();
+  void 				DrawAIicon();
+  void 				save();
+
+  Menu();
+  ~Menu();
+
 private:
-	Settings 	conf;
-	int			sp;
-	int 		nb_icon_ai;
-	int 		diff_select;
-	int 		menu_select;
-	int 		size_select;
-	gdl::Image  MainMenu_img;
-	gdl::Image  SettingMenu_img;
-	gdl::Image 	AI_img;
-	gdl::Image	Select_img;
-	Camera		camera_;
-	gdl::Clock	myClock;
-	float		time;
+  Settings 			conf;
+  Camera			camera_;
+  int				sp;
+  int 				nb_icon_ai;
+  int 				diff_select;
+  int 				menu_select;
+  int 				size_select;
+  float				time;
+
+  gdl::Image  			MainMenu_img;
+  gdl::Image  			SettingMenu_img;
+  gdl::Image 			AI_img;
+  gdl::Image			Select_img;
+  gdl::Clock			myClock;
 };
 
 #endif

@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 16:11:33 2012 randy lyvet
-// Last update Wed May 30 11:05:30 2012 randy lyvet
+// Last update Wed May 30 12:45:34 2012 randy lyvet
 //
 
 #include        <cstdlib>
@@ -13,7 +13,8 @@
 #include	"Camera.hh"
 
 void Camera::initialize(void)
-{}
+{
+}
 
 void Camera::update(gdl::GameClock const & gameClock, gdl::Input & input)
 {

@@ -31,7 +31,7 @@ public:
   int	see_down(std::map<int, std::map<int, char> > map, Level *lv);
   int	see_right(std::map<int, std::map<int, char> > map, Level *lv);
   int	search_bomb(std::map<int, std::map<int, char> > map, Level *lv);
- 
+
   enum level
     {
       EASY,
