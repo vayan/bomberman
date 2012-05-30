@@ -81,8 +81,6 @@ void					Level::generateMap(Settings conf)
   int					nbPlayers = _conf.GetNbPlayers();
   int					nbIas = _conf.GetNb_AI();
 
-
-  std::cout << ">> nb player" << nbPlayers << " " << nbIas << std::endl;
   while (y < height)
   {
     if (x == width - 1)
