@@ -155,52 +155,52 @@ void  Bomberman::refresh_setting()
 void  Bomberman::update_all_obj(std::list<AObject*>::iterator itb)
 {
   while (itb != this->objects_.end())
+  {
+    switch ((*itb)->_type)
     {
-      switch ((*itb)->_type)
-	{
-	case 2:
-	  {
-	    if (static_cast<Player*>((*itb))->isDie())
-	      {
-		_audio->play(3);
-		if (static_cast<Player*>((*itb))->getTy() < 2)
-		  {
-		    Score scr;
-		    scr.checkScore(static_cast<Player*>((*itb))->getScore());
-		    std::cout << "View Hight Score: " << "file:///HightScore.scr.html" << std::endl;
-		  }
-		delete (*itb);
-		this->objects_.erase(itb);
-		itb = this->objects_.begin();
-	      }
-	    (*itb)->update(gameClock_, input_);
-	  }
-	  break;
-	case 4:
-	  if (static_cast<Bombe*>((*itb))->time(false))
-	    {
-	      level->setCase((*itb)->getX(), (*itb)->getY(), 'f');
-	      static_cast<Bombe*>((*itb))->explose(this->objects_);
-	      delete (*itb);
-	      this->objects_.erase(itb);
-	      itb = this->objects_.begin();
-	    }
-	  break;
-	case 6:
-	  (*itb)->update(gameClock_, input_);
-	  if (static_cast<Explosion*>((*itb))->getTime())
-	    {
-	      delete (*itb);
-	      this->objects_.erase(itb);
-	      itb = this->objects_.begin();
-	    }
-	  break;
-	default:
-	  (*itb)->update(gameClock_, input_);
-	  break;
-	}
-      itb++;
+     case 2:
+     {
+       if (static_cast<Player*>((*itb))->isDie())
+       {
+        _audio->play(3);
+        if (static_cast<Player*>((*itb))->getTy() < 2)
+        {
+          Score scr;
+          scr.checkScore(static_cast<Player*>((*itb))->getScore());
+          std::cout << "View Hight Score: " << "file:///HightScore.scr.html" << std::endl;
+        }
+        delete (*itb);
+        this->objects_.erase(itb);
+        itb = this->objects_.begin();
+      }
+      (*itb)->update(gameClock_, input_);
     }
+    break;
+    case 4:
+    if (static_cast<Bombe*>((*itb))->time(false))
+    {
+     level->setCase((*itb)->getX(), (*itb)->getY(), 'f');
+     static_cast<Bombe*>((*itb))->explose(this->objects_);
+     delete (*itb);
+     this->objects_.erase(itb);
+     itb = this->objects_.begin();
+   }
+   break;
+   case 6:
+   (*itb)->update(gameClock_, input_);
+   if (static_cast<Explosion*>((*itb))->getTime())
+   {
+     delete (*itb);
+     this->objects_.erase(itb);
+     itb = this->objects_.begin();
+   }
+   break;
+   default:
+   (*itb)->update(gameClock_, input_);
+   break;
+ }
+ itb++;
+}
 }
 
 void  Bomberman::InputPause()
@@ -218,20 +218,14 @@ void  Bomberman::InputPause()
 
       //std::cout << " X " << x << " Y " << y << std::endl;
     if (PAUSE_BUTTON_SAVE)
-    {
      _pause->svg->SaveFile(level, objects_);
-   }
    if (PAUSE_BUTTON_RESUME)
    {
      _pause->is_active = false;
      refresh_setting();
    }
    if (PAUSE_BUTTON_EXIT)
-   {
-    // refresh_setting();
-    // window_.close();
-	   exit (EXIT_SUCCESS);
-  }
+    exit (EXIT_SUCCESS);
 }
 }
 
@@ -276,13 +270,13 @@ int    Bomberman::check_death()
         return (0);
     }
   }
-  //if (nb_p1 == 1 && nb_ia == 0 && nb_p2 == 0)
-    //_EndGame->state = 3;
-  if (nb_p1 == 0 && nb_ia == 0 && nb_p2 == 1)
-    {
-      _EndGame->state = 4;
-      _audio->play(4);
-    }
+  if (nb_p1 == 1 && nb_ia == 0 && nb_p2 == 0)
+    _EndGame->state = 3;
+  else if (nb_p1 == 0 && nb_ia == 0 && nb_p2 == 1)
+  {
+    _EndGame->state = 4;
+    _audio->play(4);
+  }
   else if (nb_p1 == 0 && nb_p2 == 0)
     _EndGame->state = 1;
   else

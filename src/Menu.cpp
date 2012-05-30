@@ -120,7 +120,6 @@ void 	Menu::MainMenu_input()
 		if (EXIT_BUTTON)
 		{
 			conf.SetSVG(1);
-			conf.SetNbPlayers(1);
 			if(!std::ifstream("save.bm"))
 				conf.SetSVG(0);
 			window_.close();
