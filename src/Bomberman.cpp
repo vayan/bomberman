@@ -37,7 +37,6 @@ void    Bomberman::init_new(void)
        break;
        case 'r':
        {
-        std::cout << "creation player" << std::endl;
          Player *pl = new Player("Lola", x, y, 1, 3, 2, 2, 1, this->level, this, 0, bonus);
          _hud->addPlayer(pl);
          this->objects_.push_back(pl);
