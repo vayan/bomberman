@@ -231,9 +231,9 @@ void  Bomberman::InputPause()
    }
    if (PAUSE_BUTTON_EXIT)
    {
-    refresh_setting();
-    window_.close();
-	     //exit (EXIT_SUCCESS);
+    // refresh_setting();
+    // window_.close();
+	   exit (EXIT_SUCCESS);
   }
 }
 }
@@ -247,11 +247,11 @@ void  Bomberman::InputEnd()
 
     //std::cout << " X " << x << " Y " << y << std::endl;
     if (END_BUTTON_EXIT)
-      exit (11);
+      exit (EXIT_SUCCESS);
     if (END_BUTTON_RESTART)
     {
-      refresh_setting();
-      window_.close();
+      // refresh_setting();
+      // window_.close();
     }
   }
 }

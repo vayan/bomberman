@@ -35,32 +35,30 @@ std::map<int,std::map<int,char> > genmap()
 
 int		main(void)
 {
-  while (11)
+  Level   *level = new Level();
+  Menu    *GUI = new Menu();
+
+  GUI->run();
+
+  delete GUI;
+  Settings conf;
+
+  if (conf.GetSVG() == 1)
   {
-    Level   *level = new Level();
-    Menu    *GUI = new Menu();
-
-    GUI->run();
-
-    delete GUI;
-    Settings conf;
-
-    if (conf.GetSVG() == 1)
-    {
-      Save sv;
-      std::cout << "Reload from save " << sv.GetLvl() << std::endl;
-      level = level->unpack(sv.GetLvl());
-    }
-    else
-    {
-      std::cout << "new game " << std::endl;
-      level->generateMap(conf);
-    }
-    Bomberman	*bomberman = new Bomberman(level);
-    bomberman->run();
-
-    delete bomberman;
-    delete level;
+    Save sv;
+    std::cout << "Reload from save " << sv.GetLvl() << std::endl;
+    level = level->unpack(sv.GetLvl());
   }
+  else
+  {
+    std::cout << "new game " << std::endl;
+    level->generateMap(conf);
+  }
+  Bomberman	*bomberman = new Bomberman(level);
+  bomberman->run();
+
+  delete bomberman;
+  delete level;
+
   return (EXIT_SUCCESS);
 }
