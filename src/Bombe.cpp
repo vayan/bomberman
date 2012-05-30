@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Wed May  2 12:29:56 2012 alexandre haulotte
-// Last update Wed May 30 13:27:18 2012 alexandre haulotte
+// Last update Wed May 30 14:05:58 2012 alexandre haulotte
 //
 
 // 0 : Gauche
@@ -184,6 +184,9 @@ bool	Bombe::bang(int dir, bool state, std::list<AObject*> &obj, int actBang)
 		  break;
 		case 't':
 		  obj.push_back( bonus->createBonus(x_b, y_b, 1, 6));
+		  break;
+		case 'l':
+		  obj.push_back( bonus->createBonus(x_b, y_b, 1, 7));
 		  break;
 		default:
 		  break;

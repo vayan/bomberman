@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Tue May 29 15:09:13 2012 alexandre haulotte
-// Last update Wed May 30 13:46:56 2012 alexandre haulotte
+// Last update Wed May 30 14:21:35 2012 alexandre haulotte
 //
 
 #include		"Player.hh"
@@ -35,8 +35,10 @@ Player::Player(std::string _name, int _x, int _y, int _id, int _life, float _spe
 :AObject()
 {
   Settings Conf;
+  multiBombe = false;
   bon = bo;
   this->_rotation = 0;
+  _direction = 0;
   time_bombe = 0;
   time_mvt = 0;
   clock_bombe.play();
@@ -246,6 +248,7 @@ int 			Player::ActionLeft(Level *lvl, std::list<AObject*> all_object)
 {
   if ((input->isKeyDown(key_left) || _IA != NULL))
   {
+    _direction = 2;
     this->_rotation = 0;
     this->awake = 0;
     this->action = 1;
@@ -269,6 +272,7 @@ int 			Player::ActionRight(Level *lvl, std::list<AObject*> all_object)
 {
   if ((input->isKeyDown(key_right) || _IA != NULL))
   {
+    _direction = 3;
     this->_rotation = 180;
     this->awake = 0;
     this->action = 1;
@@ -292,6 +296,7 @@ int 			Player::ActionDown(Level *lvl, std::list<AObject*> all_object)
 {
   if ((input->isKeyDown(key_down) || _IA != NULL))
   {
+    _direction = 1;
    this->_rotation = 90;
    this->awake = 0;
    this->action = 1;
@@ -315,6 +320,7 @@ int 			Player::ActionUp(Level *lvl, std::list<AObject*> all_object)
 {
   if ((input->isKeyDown(key_up) || _IA != NULL))
   {
+    _direction = 0;
     this->_rotation = 270;
     this->model_.play("run");
     this->awake = 0;
@@ -334,6 +340,54 @@ int 			Player::ActionUp(Level *lvl, std::list<AObject*> all_object)
  return (1);
 }
 
+void			Player::mBombe()
+{
+  int	xb = x;
+  int	yb = y;
+  int	dir;
+  int	sx = x;
+  int	sy = y;
+
+  if (_direction > 1)
+    {
+      if (_direction == 2)
+	dir = -1;
+      else
+	dir = 1;
+      yb += dir;
+      while (nb_bomb > 0 && lvl->getCase(xb, yb) == 'f')
+	{
+	  x = xb;
+	  y = yb;
+	  Bombe *b = game->addBombe(&this[0]);
+	  lvl->setCase(xb, yb, 'b');
+	  nb_bomb--;
+	  bombes.push_back(b);
+	  yb += dir;
+	}
+    }
+  else
+    {
+      if (_direction == 0)
+	dir = -1;
+      else
+	dir = 1;
+      xb += dir;
+      while (nb_bomb > 0 && lvl->getCase(xb, yb) == 'f')
+	{
+	  x = xb;
+	  y = yb;
+	  Bombe *b = game->addBombe(&this[0]);
+	  lvl->setCase(xb, yb, 'b');
+	  nb_bomb--;
+	  bombes.push_back(b);
+	  xb += dir;
+	}
+    }
+  x = sx;
+  y = sy;
+}
+
 void			Player::ActionDropBomb(Level *lvl)
 {
   clock_bombe.update();
@@ -341,10 +395,15 @@ void			Player::ActionDropBomb(Level *lvl)
   if (time_bombe > 0.2 && (input->isKeyDown(key_bombe) || _IA != NULL) && nb_bomb > 0)
   {
     time_bombe = 0.0;
-    Bombe *b = game->addBombe(&this[0]);
-    lvl->setCase(x, y, 'b');
-    nb_bomb--;
-    bombes.push_back(b);
+    if (lvl->getCase(x, y) == 'b' && multiBombe == true)
+      mBombe();
+    else
+      {
+	Bombe *b = game->addBombe(&this[0]);
+	lvl->setCase(x, y, 'b');
+	nb_bomb--;
+	bombes.push_back(b);
+      }
   }
 }
 
@@ -376,72 +435,75 @@ void			Player::ScanAllAction(Level *_lvl, std::list<AObject*>& all_object)
   clock_mvt.update();
   time_mvt += clock_mvt.getElapsedTime();
   if (!_IA)
-  {
-    if (time_mvt * 100 > speed)
     {
-     time_mvt = 0;
-     ActionLeft(lvl, all_object);
-     ActionRight(lvl, all_object);
-     ActionUp(lvl, all_object);
-     ActionDown(lvl, all_object);
-   }
-   if (this->awake > 30 &&
-     this->action == 1)
-   {
-     this->model_.play("stop");
-     this->awake = 0;
-     this->action = 0;
-     this->model_.set_anim_speed("stop", 7);
-   }
-   ActionDropBomb(lvl);
- }
- else
- {
-  _IA->IA_moves(lvl, all_object);
-}
-if (o_x != x || o_y != y)
-{
-  if (_IA)
-   lvl->movePlayer(o_x, o_y, this, 'i');
- else if (key_up == gdl::Keys::Up)
-   lvl->movePlayer(o_x, o_y, this, 'r');
- else
-   lvl->movePlayer(o_x, o_y, this, 'g');
-}
-it = scanBonus(all_object);
-if (it != all_object.end())
-{
-  score += 5;
-  switch (static_cast<BonusBox*>((*it))->getType())
-  {
-   case 0:
-   power++;
-   break;
-   case 1:
-   nb_bomb++;
-   bomb_max++;
-   break;
-   case 2:
-   if (speed > 1)
-     speed--;
-   break;
-   case 4:
-     if (power > 1)
-       power--;
-   break;
-  case 5:
-     if (bomb_max > 1)
-       bomb_max--;
-     break;
-   case 3:
-       speed++;
-   break;
-   default:
-   break;
- }
- delete ((*it));
- all_object.erase(it);
-}
+      if (time_mvt * 100 > speed)
+	{
+	  time_mvt = 0;
+	  ActionLeft(lvl, all_object);
+	  ActionRight(lvl, all_object);
+	  ActionUp(lvl, all_object);
+	  ActionDown(lvl, all_object);
+	}
+      if (this->awake > 30 &&
+	  this->action == 1)
+	{
+	  this->model_.play("stop");
+	  this->awake = 0;
+	  this->action = 0;
+	  this->model_.set_anim_speed("stop", 7);
+	}
+      ActionDropBomb(lvl);
+    }
+  else
+    {
+      _IA->IA_moves(lvl, all_object);
+    }
+  if (o_x != x || o_y != y)
+    {
+      if (_IA)
+	lvl->movePlayer(o_x, o_y, this, 'i');
+      else if (key_up == gdl::Keys::Up)
+	lvl->movePlayer(o_x, o_y, this, 'r');
+      else
+	lvl->movePlayer(o_x, o_y, this, 'g');
+    }
+  it = scanBonus(all_object);
+  if (it != all_object.end())
+    {
+      score += 5;
+      switch (static_cast<BonusBox*>((*it))->getType())
+	{
+	case 0:
+	  power++;
+	  break;
+	case 1:
+	  nb_bomb++;
+	  bomb_max++;
+	  break;
+	case 2:
+	  if (speed > 1)
+	    speed--;
+	  break;
+	case 4:
+	  if (power > 1)
+	    power--;
+	  break;
+	case 5:
+	  if (bomb_max > 1)
+	    bomb_max--;
+	  break;
+	case 3:
+	  speed++;
+	  break;
+	case 6:
+	  multiBombe = true;
+	  break;
+	default:
+	  break;
+	}
+      delete ((*it));
+      all_object.erase(it);
+    }
 }
 
 void 	Player::setID(int &_id) { id = _id; }

@@ -68,6 +68,7 @@ public:
   std::string		&pack();
   Player		    *unpack(std::string&);
   double		getScore() const;
+  void			mBombe();
   ////////////////////////////////////////////
 
   Player();
@@ -83,12 +84,12 @@ private:
   gdl::Keys::Key	key_left;
   gdl::Keys::Key	key_right;
   gdl::Keys::Key	key_bombe;
-
+  bool			multiBombe;
   std::string 		_pack;
   std::string		name;
 
   int			_rotation;
-
+  int			_direction;
   std::list<AObject*>	bombes;
   int			  awake;
   int			  action;

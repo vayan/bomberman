@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Tue May  8 22:44:37 2012 randy lyvet
-// Last update Wed May 30 14:01:36 2012 randy lyvet
+// Last update Wed May 30 14:04:26 2012 alexandre haulotte
 
 #ifndef TEXTURES_HH_//
 # define TEXTURES_HH_
@@ -26,6 +26,7 @@ public:
   gdl::Image    Pod_;
   gdl::Image    Nbd_;
   gdl::Image    Spd_;
+  gdl::Image    Line_;
 
   Texture();
   ~Texture();
