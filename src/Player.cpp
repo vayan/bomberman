@@ -112,9 +112,9 @@ void			Player::initialize(void)
   this->model_ = gdl::Model::load("assets/marvin.fbx");
   this->model_.cut_animation(this->model_, "Take 001", 90, 130, "stop");
   this->model_.cut_animation(this->model_, "Take 001", 35, 55, "run");
-  if (ty = 0)
+  if (ty == 0)
     this->model_.set_default_model_color(c);
-  if (ty = 1)
+  if (ty == 1)
     this->model_.set_default_model_color(c);
 }
 
