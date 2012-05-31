@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Tue May 29 15:09:13 2012 alexandre haulotte
-// Last update Thu May 31 15:14:19 2012 yuguo cao
+// Last update Thu May 31 15:31:23 2012 alexandre haulotte
 //
 
 #include		"Player.hh"
@@ -13,6 +13,9 @@
 #include		"Move.hh"
 #include		"Settings.hh"
 #include		<iostream>
+
+int                   Player::getDir() const
+{ return (_direction); }
 
 void      Player::qwertyorazerty()
 {
@@ -141,12 +144,13 @@ void			Player::initialize(void)
 
 void	Player::die()
 {
+  int	ox = x;
+  int	oy = y;
   if (life == 0)
     is_dead = true;
   else
     _audio->play(6);
   life--;
-  lvl->setCase(x, y, 'f');
   x = fX;
   y = fY;
   x_pix         = x * 10;
@@ -165,6 +169,7 @@ void	Player::die()
       lvl->setCase(x, y, 'i');
       break;
     }
+  lvl->setCase(ox, oy, 'f');
 }
 
 bool	Player::isDie()

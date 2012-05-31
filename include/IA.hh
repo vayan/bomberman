@@ -21,6 +21,7 @@ private:
   char			last;
   Player		*_pl;
   std::list<AObject*>	object;
+  int			oldDir;
 public:
   IA(int level, Player *pl);
   ~IA();

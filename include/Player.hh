@@ -76,6 +76,7 @@ public:
   Player		    *unpack(std::string&);
   double		getScore() const;
   void			mBombe();
+  int			getDir() const;
   ////////////////////////////////////////////
 
   Player();

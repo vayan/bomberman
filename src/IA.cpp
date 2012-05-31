@@ -5,7 +5,7 @@
 // Login   <carlie_a@epitech.net>
 // 
 // Started on  Mon May  7 10:03:08 2012 anatole carlier
-// Last update Thu May 31 15:27:11 2012 anatole carlier
+// Last update Thu May 31 15:48:03 2012 alexandre haulotte
 //
 
 #include "IA.hh"
@@ -14,6 +14,7 @@
 
 IA::IA(int level, Player* pl)
 {
+  oldDir = pl->getDir();
   this->_pl = pl;
   this->level = level;
   this->escape = 0;
@@ -115,17 +116,6 @@ void	IA::IA_moves(Level *lv, std::list<AObject*> all_object)
 	see_down(map, lv);
       else
 	{
-	  switch (last)
-	    {
-	    case 'l':
-	      _pl->ActionLeft(lv, this->object); last = 0; break;
-	    case 'r':
-	      _pl->ActionRight(lv, this->object); last = 0; break;
-	    case 'u':
-	      _pl->ActionUp(lv, this->object); last = 0; break;
-	    case 'd':
-	      _pl->ActionDown(lv, this->object); last = 0; break;
-	    }
 	  if (see_left(map, lv) != 0)
 	    if (see_up(map, lv) != 0)
 	      if (see_down(map, lv) != 0)
@@ -227,7 +217,11 @@ int	IA::see_left(std::map<int, std::map<int, char> > map, Level *lv)
     case 'f':
       if (map[x][y-2] != 'b' && map[x][y-3] != 'b')
     	{
-    	  _pl->ActionLeft(lv, this->object); prev = 'l'; last = 'l';
+    	  _pl->ActionLeft(lv, this->object); prev = 'l';
+	  last = '1';
+	  if (oldDir != 2)
+	    _pl->ActionLeft(lv, this->object);
+	  oldDir = _pl->getDir();
 	  return (0);
     	  break;
     	}
@@ -270,6 +264,9 @@ int     IA::see_up(std::map<int, std::map<int, char> > map, Level *lv)
       if (map[x-2][y] != 'b' && map[x-3][y] != 'b')
         {
           _pl->ActionUp(lv, this->object); prev = 'u'; last = 'u';
+	  if (oldDir != 0)
+	    _pl->ActionUp(lv, this->object);
+	  oldDir = _pl->getDir();
           return (0);
           break;
         }
@@ -304,6 +301,9 @@ int     IA::see_right(std::map<int, std::map<int, char> > map, Level *lv)
       if (map[x][y+2] != 'b' && map[x][y+3] != 'b')
 	{
           _pl->ActionRight(lv, this->object); prev = 'r'; last = 'r';
+	  if (oldDir != 3)
+	    _pl->ActionRight(lv, this->object);
+	  oldDir = _pl->getDir();
 	  return (0);
           break;
 	}
@@ -338,6 +338,9 @@ int     IA::see_down(std::map<int, std::map<int, char> > map, Level *lv)
       if (map[x+2][y] != 'b' && map[x+3][y] != 'b')
         {
           _pl->ActionDown(lv, this->object); prev = 'd'; last = 'd';
+	  if (oldDir != 1)
+	    _pl->ActionDown(lv, this->object);
+	  oldDir = _pl->getDir();
           return (0);
           break;
         }
