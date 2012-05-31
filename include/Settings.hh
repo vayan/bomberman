@@ -11,6 +11,7 @@
 // 4em ligne -> map_y
 // 5em ligne -> nb de joueurs
 // 6em ligne -> restore svg
+// 7em ligne -> typekeyboard (1 azerty / 2 qwerty)
 
 class Settings {
 public:
@@ -34,8 +35,10 @@ public:
   void		SetNb_AI(int);
   void		SetMapx(int);
   void		SetMapY(int);
+  void    SetKeyboard(int);
   void		SetNbPlayers(int);
   void	   	RefreshSettings();
+  int     GetTypeKeyboard();
 
   Settings();
   ~Settings();
@@ -47,6 +50,7 @@ private:
   int		map_y;
   int 		nb_players;
   int 		restore_svg;
+  int     type_keyboard;
 };
 
 #endif

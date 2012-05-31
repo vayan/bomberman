@@ -17,6 +17,7 @@ Settings::Settings()
 		outfile << "11" << std::endl;
 		outfile << "1" << std::endl;
 		outfile << "0" << std::endl;
+		outfile << "1" << std::endl;
 		outfile.close();
 	}
 
@@ -55,6 +56,11 @@ Settings::Settings()
 	{
 		getline(infile,buff);
 		restore_svg = to_number<int>(buff);
+	}
+	if (infile.good())
+	{
+		getline(infile,buff);
+		type_keyboard = to_number<int>(buff);
 	}
 	infile.close();
 	aff_settings();
@@ -101,6 +107,12 @@ void 			Settings::SetNbPlayers(int nb)
 	RefreshSettings();
 }
 
+void 		Settings::SetKeyboard(int type)
+{
+	type_keyboard = type;
+	RefreshSettings();
+}
+
 
 void	   Settings::RefreshSettings()
 {
@@ -111,6 +123,7 @@ void	   Settings::RefreshSettings()
 	outfile << map_y << std::endl;
 	outfile << nb_players << std::endl;
 	outfile << restore_svg << std::endl;
+	outfile << type_keyboard << std::endl;
 	outfile.close();
 }
 
@@ -129,3 +142,4 @@ int		   Settings::GetMapx() { return (map_x); }
 int		   Settings::GetMapY() { return (map_y); }
 int		 	Settings::GetNbPlayers() { return (nb_players); }
 int 		Settings::GetSVG() { return (restore_svg); }
+int 		Settings::GetTypeKeyboard() { return (type_keyboard); }

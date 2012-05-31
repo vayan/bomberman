@@ -14,6 +14,7 @@ Menu::Menu()
 	menu_select 	= 0;
 	diff_select 	= conf.GetDifficulty();
 	nb_icon_ai		 = conf.GetNb_AI();
+	type_k = conf.GetTypeKeyboard();
 	switch (conf.GetMapx())
 	{
 		case 11 :
@@ -96,6 +97,21 @@ void  Menu::PutSelect_difficulty()
 	UI::DrawImage(Select_img, x, y);	
 }
 
+void  Menu::PutSelect_keyboard()
+{
+	int x = 0;
+	int y = 85;
+
+	switch (type_k)
+	{
+		case 1:
+		x = 324; break;
+		case 2:
+		x = 444; break;
+	}
+	UI::DrawImage(Select_img, x, y);	
+}
+
 void 	Menu::MainMenu_input()
 {
 	if (input_.isMouseButtonDown(gdl::Mouse::Left) == true)
@@ -131,6 +147,7 @@ void		Menu::save()
 {
 	conf.SetNb_AI(nb_icon_ai);
 	conf.SetDifficulty(static_cast<Settings::Difficulty>(diff_select));
+	conf.SetKeyboard(type_k);
 	switch (size_select)
 	{
 		case 0:
@@ -160,52 +177,57 @@ void 		Menu::SettingMenu()
 	DrawAIicon();
 	PutSelect_difficulty();
 	PutSelect_size();
+	PutSelect_keyboard();
 	UI::glDisable2D();	
 }
 
 void 	Menu::SettingMenu_input()
 {
-  if (input_.isMouseButtonDown(gdl::Mouse::Left) == true)
-    {
-      int x = input_.getMousePositionX();
-      int y = input_.getMousePositionY();
+	if (input_.isMouseButtonDown(gdl::Mouse::Left) == true)
+	{
+		int x = input_.getMousePositionX();
+		int y = input_.getMousePositionY();
 
-      usleep(40000);
-      if (CANCEL_BUTTON)
-	menu_select = 0;
-      if (PLUS_BUTTON)
-	{
-	  if ((size_select == 0 && nb_icon_ai < 6) || (size_select == 1 && nb_icon_ai < 10) || (size_select == 2 && nb_icon_ai < 22))
-	    nb_icon_ai++;
+		usleep(40000);
+		if (CANCEL_BUTTON)
+			menu_select = 0;
+		if (PLUS_BUTTON)
+		{
+			if ((size_select == 0 && nb_icon_ai < 6) || (size_select == 1 && nb_icon_ai < 10) || (size_select == 2 && nb_icon_ai < 22))
+				nb_icon_ai++;
+		}
+		if (MINUS_BUTTON)
+		{
+			if (nb_icon_ai > 0)
+				nb_icon_ai--;
+		}
+		if (EASY_BUTTON)
+			diff_select = 0;
+		if (HARD_BUTTON)
+			diff_select = 1;
+		if (INFERNO_BUTTON)
+			diff_select = 2;
+		if (SAVE_BUTTON)
+			save();
+		if (SMALL_BUTTON)
+		{
+			size_select = 0;
+			if (nb_icon_ai > 5)
+				nb_icon_ai = 5;
+		}
+		if (MEDIUM_BUTTON)
+		{
+			size_select = 1;
+			if (nb_icon_ai > 9)
+				nb_icon_ai = 9;
+		}
+		if (BIG_BUTTON)
+			size_select = 2;
+		if (SET_QWERTY)
+			type_k = 1;
+		if (SET_AZERTY)
+			type_k = 2;
 	}
-      if (MINUS_BUTTON)
-	{
-	  if (nb_icon_ai > 0)
-	    nb_icon_ai--;
-	}
-      if (EASY_BUTTON)
-	diff_select = 0;
-      if (HARD_BUTTON)
-	diff_select = 1;
-      if (INFERNO_BUTTON)
-	diff_select = 2;
-      if (SAVE_BUTTON)
-	save();
-      if (SMALL_BUTTON)
-	{
-	  size_select = 0;
-	  if (nb_icon_ai > 5)
-	    nb_icon_ai = 5;
-	}
-      if (MEDIUM_BUTTON)
-	{
-	  size_select = 1;
-	  if (nb_icon_ai > 9)
-	    nb_icon_ai = 9;
-	}
-      if (BIG_BUTTON)
-	size_select = 2;
-    }
 }
 
 
@@ -219,24 +241,24 @@ void      Menu::initialize(void)
 
 void      Menu::update(void) 
 {
-  myClock.update();
-  time += myClock.getElapsedTime();
-  if (time >= 1.0 / 100.0)
-    {
-      time = 0;
-      sp = sp + 1;
-      camera_.update(gameClock_, input_);
-      draw();
-      switch (menu_select)
+	myClock.update();
+	time += myClock.getElapsedTime();
+	if (time >= 1.0 / 100.0)
 	{
-	case 0:
-	  MainMenu_input(); break;
-	case 1:
-	  SettingMenu_input(); break;
-	}	
-      if (sp == 20)
-	sp = 0;
-    }
+		time = 0;
+		sp = sp + 1;
+		camera_.update(gameClock_, input_);
+		draw();
+		switch (menu_select)
+		{
+			case 0:
+			MainMenu_input(); break;
+			case 1:
+			SettingMenu_input(); break;
+		}	
+		if (sp == 20)
+			sp = 0;
+	}
 }
 
 void      Menu::draw(void) 

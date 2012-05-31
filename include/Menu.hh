@@ -33,6 +33,8 @@
 #define SMALL_BUTTON			x >= 325 && x <= 428 && y >= 444 && y <= 470
 #define MEDIUM_BUTTON			x >= 448 && x <= 547 && y >= 444 && y <= 470
 #define BIG_BUTTON			x >= 568 && x <= 667 && y >= 444 && y <= 470
+#define SET_QWERTY      x >= 326 && x <= 427 && y >= 486 && y <= 513
+#define SET_AZERTY      x >= 447 && x <= 545 && y >= 486 && y <= 513
 
 class Pause;
 
@@ -52,6 +54,7 @@ public:
   void				update(void);
   void				PutSelect_difficulty();
   void 				PutSelect_size();
+  void        PutSelect_keyboard();
   void 				DrawAIicon();
   void 				save();
 
@@ -67,6 +70,7 @@ private:
   int 				menu_select;
   int 				size_select;
   float				time;
+  int       type_k;
 
   gdl::Image  			MainMenu_img;
   gdl::Image  			SettingMenu_img;

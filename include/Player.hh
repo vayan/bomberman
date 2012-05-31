@@ -54,6 +54,7 @@ public:
   void setTy(int t);
   void setTime_mvt(int tmvt);
   void setNbBomb(int nbb) { nb_bomb = nbb;}
+  void  qwertyorazerty();
   int 			ActionLeft(Level *lvl, std::list<AObject*>);
   int 			ActionRight(Level *lvl, std::list<AObject*>);
   int 			ActionUp(Level *lvl, std::list<AObject*>);
