@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 17:30:05 2012 randy lyvet
-// Last update Wed May 30 11:07:41 2012 randy lyvet
+// Last update Thu May 31 11:40:48 2012 yuguo cao
 //
 
 #include		"Object.hh"
@@ -50,15 +50,21 @@ void			Cube::drawSurface(float x, float y, float z, float size, int mod)
 void			Cube::draw()
 {
   float		offset = 1 / 2.0;
+  float		size = 1;
 
+  if (_type == 0)
+    {
+      offset = 0.4;
+      size = 0.9;
+    }
   this->texture_.bind();
   glBegin(GL_QUADS);
-  drawSurface(position_.x, position_.y, position_.z - offset, 1, 1);
-  drawSurface(position_.x, position_.y, position_.z + offset, 1, 1);
-  drawSurface(position_.x + offset, position_.y, position_.z, 1, 2);
-  drawSurface(position_.x - offset, position_.y, position_.z, 1, 2);
-  drawSurface(position_.x, position_.y + offset, position_.z, 1, 3);
-  drawSurface(position_.x, position_.y - offset, position_.z, 1, 3);
+  drawSurface(position_.x, position_.y, position_.z - offset, size, 1);
+  drawSurface(position_.x, position_.y, position_.z + offset, size, 1);
+  drawSurface(position_.x + offset, position_.y, position_.z, size, 2);
+  drawSurface(position_.x - offset, position_.y, position_.z, size, 2);
+  drawSurface(position_.x, position_.y + offset, position_.z, size, 3);
+  drawSurface(position_.x, position_.y - offset, position_.z, size, 3);
   glEnd();
 }
 

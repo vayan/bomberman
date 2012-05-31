@@ -5,7 +5,7 @@
 // Login   <cao_y@epitech.net>
 // 
 // Started on  Fri Apr 27 12:36:02 2012 yuguo cao
-// Last update Wed May 30 11:39:17 2012 yuguo cao
+// Last update Thu May 31 12:37:49 2012 yuguo cao
 //
 
 #include "Level.hh"
@@ -45,12 +45,17 @@ void					Level::readMap(std::string path)
 {
   char					c;
   std::ifstream				fmap;
+  std::string				cPath;
   int					x = 0;
   int					y = 0;
 
-  fmap.open("tmp.map");
-  //if(!fmap)
-  //throw(new Errur("Can't open file."));
+  cPath = "./.level/" + path + ".map";
+  fmap.open(&cPath[0]);
+  if(!fmap)
+    {
+      std::cout << "Invalid file " << path << "." << std::endl;
+      exit(0);
+    }
   while(fmap.good())
   {
     fmap.get(c);

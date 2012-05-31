@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 12:15:05 2012 randy lyvet
-// Last update Wed May 30 11:09:06 2012 randy lyvet
+// Last update Thu May 31 12:32:44 2012 yuguo cao
 //
 
 #include	<map>
@@ -33,23 +33,26 @@ std::map<int,std::map<int,char> > genmap()
  return (map);
 }
 
-int		main(void)
+int		main(int ac, char **av)
 {
   Level   *level = new Level();
   Menu    *GUI = new Menu();
 
-  GUI->run();
-
-  delete GUI;
-  Settings conf;
-
-  if (conf.GetSVG() == 1)
-  {
-    Save sv;
-    level = level->unpack(sv.GetLvl());
-  }
+  if (ac == 1)
+    {
+      GUI->run();
+      delete GUI;
+      Settings conf;
+      if (conf.GetSVG() == 1)
+	{
+	  Save sv;
+	  level = level->unpack(sv.GetLvl());
+	}
+      else
+	level->generateMap(conf);
+    }
   else
-    level->generateMap(conf);
+    level->readMap(av[1]);
   Bomberman	*bomberman = new Bomberman(level);
   bomberman->run();
   delete bomberman;
