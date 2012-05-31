@@ -32,6 +32,8 @@ public:
   virtual int		getY() const;
   int			getMultiBomb() const;
   int			getPierceBomb() const;
+  void    setMultiBomb(int);
+  void    setPierceBomb(int);
   IA        *getIA();
   int       getTy();
   char			getLvlCase(int _x, int _y) const;

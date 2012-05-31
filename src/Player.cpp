@@ -17,7 +17,7 @@
 void      Player::qwertyorazerty()
 {
   Settings Conf;
-    
+
   switch (Conf.GetTypeKeyboard())
   {
     case 1:
@@ -96,17 +96,17 @@ Player::Player(std::string _name, int _x, int _y, int _id, int _life, float _spe
    }
    else if (ty == 1)
     qwertyorazerty();
-   else
-   {
-     _IA = new IA(Conf.GetDifficulty(), this);
-     key_up = gdl::Keys::A;
-     key_down = gdl::Keys::A;
-     key_left = gdl::Keys::A;
-     key_right = gdl::Keys::A;
-     key_bombe = gdl::Keys::A;
-   }
+  else
+  {
+   _IA = new IA(Conf.GetDifficulty(), this);
+   key_up = gdl::Keys::A;
+   key_down = gdl::Keys::A;
+   key_left = gdl::Keys::A;
+   key_right = gdl::Keys::A;
+   key_bombe = gdl::Keys::A;
  }
- _type = 2;
+}
+_type = 2;
 }
 
 Player::~Player()
@@ -206,6 +206,8 @@ std::string &Player::pack()
   to_string(time_bombe) + ';' +
   to_string(time_mvt) + ';' +
   to_string(ty) + ';' +
+  to_string(getMultiBomb()) + ';' +
+  to_string(getPierceBomb()) + ';' +
   to_string(nb_bomb);
 
   return (_pack);
@@ -234,6 +236,8 @@ Player			*Player::unpack(std::string& to_tokenize)
   float   _time_bombe = to_number<float>(*(it++));
   float   _time_mvt = to_number<float>(*(it++));
   int     _ty = to_number<int>(*(it++));
+  int     _multibomb = to_number<int>(*(it++));
+  int     _piercebomb = to_number<int>(*(it++));
   int     _nb_bomb = to_number<int>(*(it++));
 
   Player 		*unpack_player = new Player(name, 1, 1, id, life, speed, power, nb_bomb, lvl, game, _ty, bon);
@@ -255,6 +259,8 @@ Player			*Player::unpack(std::string& to_tokenize)
   unpack_player->setTime_mvt(_time_mvt);
   unpack_player->setBomb(_nb_bomb);
   unpack_player->setTy(_ty);
+  unpack_player->setMultiBomb(_multibomb);
+  unpack_player->setPierceBomb(_piercebomb);
 
   return (unpack_player);
 }
@@ -563,6 +569,22 @@ int		Player::getPierceBomb() const
   return (0);
 }
 
+void    Player::setMultiBomb(int mult) 
+{ 
+  if (mult == 1) 
+    multiBombe = true;
+  if (mult == 0)
+    multiBombe = false;
+}
+
+void    Player::setPierceBomb(int pirc) 
+{  
+  if (pirc == 1) 
+    pierceBombe = true;
+  if (pirc == 0)
+    pierceBombe = false; 
+}
+
 IA    *Player::getIA(){ return (_IA); }
 void Player::setX(int _x) { x = _x; }
 void Player::setY(int _y) { y = _y; }
@@ -575,3 +597,4 @@ void Player::setTimeBomb(int timebomb) {time_bombe = timebomb;}
 void Player::setTime_mvt(int tmvt) {time_mvt = tmvt;}
 void Player::setTy(int ti) { ty = ti;}
 double Player::getScore() const {return (score);}
+
