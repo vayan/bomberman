@@ -108,6 +108,7 @@ private:
   gdl::Clock		clock_bombe;
   float			time_mvt;
   gdl::Clock		clock_mvt;
+  float    ia_tm;
   Move    		*move;
   Level     		*lvl;
   Bomberman		*game;
