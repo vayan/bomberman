@@ -34,11 +34,11 @@ void 	Menu::DrawAIicon()
 {
 	int i = 0;
 	int x = 387;
-	int y = 250;
+	int y = 230;
 
 	while (i < nb_icon_ai)
 	{
-		if ((y >= 250 - 36))
+		if ((y >= 230 - 36))
 		{
 			UI::DrawImage(AI_img, x, y);
 			x += 36;
