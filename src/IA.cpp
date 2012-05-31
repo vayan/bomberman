@@ -5,7 +5,7 @@
 // Login   <carlie_a@epitech.net>
 // 
 // Started on  Mon May  7 10:03:08 2012 anatole carlier
-// Last update Wed May 30 14:58:51 2012 anatole carlier
+// Last update Thu May 31 12:03:43 2012 anatole carlier
 //
 
 #include "IA.hh"
@@ -47,7 +47,7 @@ IA::~IA() {}
 void	IA::IA_moves(Level *lv, std::list<AObject*> all_object)
 {
   std::map<int, std::map<int, char> > map;
-
+  
   map = lv->getMap();
   this->object = all_object;
   this->x = _pl->getX();
@@ -58,58 +58,68 @@ void	IA::IA_moves(Level *lv, std::list<AObject*> all_object)
     {
      this->wait--;
      return ;
-   }
- }
- else if (this->escape == 1)
- {
-  if (search_bomb(map, lv) == 0)
-  {
-    this->escape = 0;
-    this->wait = 150;
-  }
-  else
-  {
-   if (i <= _pl->getPower())
-   {
-     prev_move(map, lv);
-     ++i;
-   }
-   else
-    i = -1;
-}
-}
-else if (search_bomb(map, lv) == 0)
-{
-  if (level != EASY)
-  {
-   if (map[x][y+1] == 'r' || map[x][y+2] == 'r' || map[x+1][y] == 'r' || map[x+2][y] == 'r' || map[x-1][y] == 'r' || map[x-2][y] == 'r')
-   {
-     _pl->ActionDropBomb(lv); escape = 1;	\
-     return;
-   }
-   else if (map[x][y+1] == 'g' || map[x][y+2] == 'g' || map[x+1][y] == 'g' || map[x+2][y] == 'g' || map[x-1][y] == 'g' || map[x-2][y] == 'g')
-   {
-     _pl->ActionDropBomb(lv); escape = 1; 
-     return;
-   }
- }
- if (x == 1)
- {
-   if (see_right(map, lv) != 0)
-     if (see_down(map, lv) != 0)
-       see_left(map, lv);
-   }
-   else if (y == (lv->getWidth() - 2) && x < 3)
-     see_down(map, lv);
-   else
-   {
-     if (see_left(map, lv) != 0)
-       if (see_up(map, lv) != 0)
-         if (see_down(map, lv) != 0)
-          see_right(map, lv);
-      }
     }
   }
+  else if (this->escape == 1)
+    {
+      if (search_bomb(map, lv) == 0)
+	{
+	  this->escape = 0;
+	  this->wait = 50;
+	}
+      else
+	{
+	  if (i <= _pl->getPower())
+	    {
+	      prev_move(map, lv);
+	      ++i;
+	    }
+	  else
+	    i = -1;
+	}
+    }
+  else if (search_bomb(map, lv) == 0)
+    {
+      if (level != EASY)
+	{
+	  if (map[x][y+1] == 'r' || map[x][y+2] == 'r' || map[x+1][y] == 'r' || map[x+2][y] == 'r' || map[x-1][y] == 'r' || map[x-2][y] == 'r')
+	    {
+	      _pl->ActionDropBomb(lv); escape = 1;
+	     return;
+	    }
+	  else if (map[x][y+1] == 'g' || map[x][y+2] == 'g' || map[x+1][y] == 'g' || map[x+2][y] == 'g' || map[x-1][y] == 'g' || map[x-2][y] == 'g')
+	   {
+	     _pl->ActionDropBomb(lv); escape = 1; 
+	     return;
+	   }
+	}
+      if (level != INFERNO)
+	{
+	  if (map[x][y+1] == 'i' || map[x][y+2] == 'i' || map[x+1][y] == 'i' || map[x+2][y] == 'i' || map[x-1][y] == 'i' || map[x-2][y] == 'i')
+	    {
+	      _pl->ActionDropBomb(lv); escape = 1;
+	      return;
+	    }
+	}
+      if (x == 1)
+       {
+	 if (see_right(map, lv) != 0)
+	   see_down(map, lv);
+       }
+      else if (y == (lv->getWidth() - 2) && x <= lv->getHeight()-2)
+	{
+	  if (see_down(map, lv) != 0)
+	    see_left(map, lv);
+	}
+      else
+	{
+	  if (see_left(map, lv) != 0)
+	   if (see_up(map, lv) != 0)
+	     if (see_down(map, lv) != 0)
+	       see_right(map, lv);
+	}
+    }
+}
 
   int     IA::search_bomb(std::map<int, std::map<int, char> > map, Level *lv)
   {
