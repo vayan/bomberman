@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Tue May 22 14:44:42 2012 alexandre haulotte
-// Last update Wed May 30 15:23:37 2012 yuguo cao
+// Last update Thu May 31 11:48:51 2012 alexandre haulotte
 //
 
 #include	"Bonus.hh"
@@ -25,7 +25,7 @@ Bonus::Bonus(int size, Level *lvl, Texture *tex)
 	{
 	  if (lvl->getCase(x, y) == 'd')
 	    {
-	      rnd = rand() % 8;
+	      rnd = rand() % 20;
 	      switch (rnd)
 		{
 		case 0:
@@ -37,6 +37,15 @@ Bonus::Bonus(int size, Level *lvl, Texture *tex)
 		case 2:
 		  _map[x][y] = 's';
 		  break;
+		case 6:
+		  _map[x][y] = 'n';
+		  break;
+		case 7:
+		  _map[x][y] = 'p';
+		  break;
+		case 8:
+		  _map[x][y] = 's';
+		  break;
 		case 3:
 		  _map[x][y] = 'o';
 		  break;
@@ -46,11 +55,14 @@ Bonus::Bonus(int size, Level *lvl, Texture *tex)
 		case 5:
 		  _map[x][y] = 't';
 		  break;
-		case 6:
-		  _map[x][y] = 'l';
-		  break;
-		case 7:
-		  _map[x][y] = 'u';
+		case 9:
+		  rnd = rand() % 3;
+		  if (rnd == 0)
+		    _map[x][y] = 'l';
+		  else if (rnd == 1)
+		    _map[x][y] = 'u';
+		  else
+		    _map[x][y] = '.';
 		  break;
 		default:
 		  _map[x][y] = '.';
