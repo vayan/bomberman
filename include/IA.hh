@@ -18,6 +18,7 @@ private:
   int			x;
   int			y;
   char			prev;
+  char			last;
   Player		*_pl;
   std::list<AObject*>	object;
 public:
