@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Wed May  2 12:29:56 2012 alexandre haulotte
-// Last update Wed May 30 15:20:56 2012 yuguo cao
+// Last update Thu May 31 10:28:46 2012 alexandre haulotte
 //
 
 // 0 : Gauche
@@ -164,7 +164,7 @@ bool	Bombe::bang(int dir, bool state, std::list<AObject*> &obj, int actBang)
 		  score += 10;
 		}
 	      lvl->setCase(x_b, y_b, 'f');
-	      if (type != 0 && !_pierce)
+	      if (type != 0)
 		return (true);
 	      c = bonus->getBonus(x_b, y_b);
 	      switch (c)
