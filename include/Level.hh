@@ -5,7 +5,7 @@
 // Login   <cao_y@epitech.net>
 // 
 // Started on  Fri Apr 27 12:37:47 2012 yuguo cao
-// Last update Fri May 25 16:11:40 2012 yuguo cao
+// Last update Thu May 31 13:36:41 2012 yuguo cao
 //
 
 #ifndef		__LEVEL__
@@ -43,7 +43,7 @@ public:
   ~Level();
 
   void					readMap(std::string path);
-  void					generateMap(Settings);
+  void					generateMap();
   void					movePlayer(int x, int y, AObject *pl, char c);
   void					placePlayer(int, int);
   void					placeHole();

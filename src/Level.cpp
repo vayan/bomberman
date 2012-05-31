@@ -5,7 +5,7 @@
 // Login   <cao_y@epitech.net>
 // 
 // Started on  Fri Apr 27 12:36:02 2012 yuguo cao
-// Last update Thu May 31 12:37:49 2012 yuguo cao
+// Last update Thu May 31 13:35:58 2012 yuguo cao
 //
 
 #include "Level.hh"
@@ -76,7 +76,7 @@ void					Level::readMap(std::string path)
  printMap(this);
 }
 
-void					Level::generateMap(Settings conf)
+void					Level::generateMap()
 {
   int					x = 0;
   int					y = 0;
@@ -121,7 +121,6 @@ void					Level::placePlayer(int nbPlayers, int nbIas)
   int					tmp_x = 1;
   int					tmp_y = 1;
   char					player = 'r';
-  int					dir = 0;
 
   if (rep < 4)
     std::cout << "Pas jouable." << std::endl;

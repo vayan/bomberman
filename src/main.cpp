@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 12:15:05 2012 randy lyvet
-// Last update Thu May 31 12:32:44 2012 yuguo cao
+// Last update Thu May 31 13:35:37 2012 yuguo cao
 //
 
 #include	<map>
@@ -49,7 +49,7 @@ int		main(int ac, char **av)
 	  level = level->unpack(sv.GetLvl());
 	}
       else
-	level->generateMap(conf);
+	level->generateMap();
     }
   else
     level->readMap(av[1]);
