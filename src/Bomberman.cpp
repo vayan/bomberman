@@ -48,6 +48,7 @@ void    Bomberman::init_new(void)
          _hud->addPlayer(pl);
          this->objects_.push_back(pl);
        }
+       break;
        case 'i' :
        {
          Player *pl = new Player("IA", x, y, 1, 3, 2, 2, 1, this->level, this, 2, bonus);
@@ -85,7 +86,7 @@ void    Bomberman::init_new(void)
        break;
       case 'b':
        {
-        Player *truc = new Player("Lola", x, y, 1, 3, 2, 2, 1, this->level, this, 0, bonus);
+         Player *truc = new Player("Lola", x, y, 1, 3, 2, 2, 1, this->level, this, 0, bonus);
          Bombe *b = new Bombe(truc, bonus, level, truc->getPierceBomb());
          b->_type = 4;
          this->objects_.push_back(b);
