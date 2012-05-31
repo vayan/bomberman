@@ -81,6 +81,8 @@ public:
   virtual ~Player();
 
 private:
+  int			fX;
+  int			fY;
   bool			is_dead;
   gdl::Input		 *input;
   gdl::Model		 model_;

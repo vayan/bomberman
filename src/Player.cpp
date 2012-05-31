@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Tue May 29 15:09:13 2012 alexandre haulotte
-// Last update Thu May 31 13:48:49 2012 alexandre haulotte
+// Last update Thu May 31 15:04:41 2012 alexandre haulotte
 //
 
 #include		"Player.hh"
@@ -67,6 +67,8 @@ Player::Player(std::string _name, int _x, int _y, int _id, int _life, float _spe
   clock_mvt.play();
   x 		= _x;
   y 		= _y;
+  fX		= x;
+  fY		= y;
   score		= 0;
   _speed = _speed;
   x_pix 	= x * 10;
@@ -138,7 +140,28 @@ void			Player::initialize(void)
 
 void	Player::die()
 {
-  is_dead = true;
+  if (life == 0)
+    is_dead = true;
+  life--;
+  lvl->setCase(x, y, 'f');
+  x = fX;
+  y = fY;
+  x_pix         = x * 10;
+  y_pix         = y * 10;
+  time_bombe = -1;
+  time_mvt = -1;
+  switch (ty)
+    {
+    case 0:
+      lvl->setCase(x, y, 'r');
+      break;
+    case 1:
+      lvl->setCase(x, y, 'g');
+      break;
+    default:
+      lvl->setCase(x, y, 'i');
+      break;
+    }
 }
 
 bool	Player::isDie()
