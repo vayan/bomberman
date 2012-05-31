@@ -278,9 +278,9 @@ int    Bomberman::check_death()
         return (0);
     }
   }
-  //if (nb_p1 == 1 && nb_ia == 0 && nb_p2 == 0)
-    //_EndGame->state = 3;
-   if (nb_p1 == 0 && nb_ia == 0 && nb_p2 == 1)
+  if (nb_p1 == 1 && nb_ia == 0 && nb_p2 == 0)
+    _EndGame->state = 3;
+   else if (nb_p1 == 0 && nb_ia == 0 && nb_p2 == 1)
   {
     _EndGame->state = 4;
     _audio->play(4);
