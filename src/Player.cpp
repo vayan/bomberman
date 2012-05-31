@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Tue May 29 15:09:13 2012 alexandre haulotte
-// Last update Wed May 30 15:08:55 2012 yuguo cao
+// Last update Thu May 31 10:17:20 2012 alexandre haulotte
 //
 
 #include		"Player.hh"
@@ -455,7 +455,11 @@ void			Player::ScanAllAction(Level *_lvl, std::list<AObject*>& all_object)
     }
   else
     {
-      _IA->IA_moves(lvl, all_object);
+      if (time_mvt * 100 > speed)
+	{
+	  time_mvt = 0;
+	  _IA->IA_moves(lvl, all_object);
+	}
     }
   if (o_x != x || o_y != y)
     {
