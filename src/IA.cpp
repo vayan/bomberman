@@ -5,7 +5,7 @@
 // Login   <carlie_a@epitech.net>
 // 
 // Started on  Mon May  7 10:03:08 2012 anatole carlier
-// Last update Thu May 31 14:27:25 2012 anatole carlier
+// Last update Thu May 31 14:42:43 2012 anatole carlier
 //
 
 #include "IA.hh"
@@ -87,6 +87,23 @@ void	IA::IA_moves(Level *lv, std::list<AObject*> all_object)
     }
   else if (search_bomb(map, lv) == 0)
     {
+      if (level != EASY)
+	{
+	  if (map[x+1][y] == 'r' || map[x+2][y] == 'r' ||
+	      map[x][y+1]== 'r' || map[x][y+2] == 'r' ||
+	      map[x-1][y]== 'r' || map[x-2][y] == 'r' ||
+	      map[x][y-1]== 'r' || map[x][y-2] == 'r')
+	    {
+	      _pl->ActionDropBomb(lv); escape = 1; return;
+	    }
+	  if (map[x+1][y] == 'g' || map[x+2][y] == 'g' ||
+              map[x][y+1]== 'g' || map[x][y+2] == 'g' ||
+              map[x-1][y]== 'g' || map[x-2][y] == 'g' ||
+              map[x][y-1]== 'g' || map[x][y-2] == 'g')
+            {
+              _pl->ActionDropBomb(lv); escape = 1; return;
+            }
+	}
       if (x == 1)
 	{
 	  if (see_right(map, lv) != 0)
