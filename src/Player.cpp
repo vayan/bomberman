@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Tue May 29 15:09:13 2012 alexandre haulotte
-// Last update Thu May 31 10:17:20 2012 alexandre haulotte
+// Last update Thu May 31 12:12:56 2012 alexandre haulotte
 //
 
 #include		"Player.hh"
@@ -69,7 +69,7 @@ Player::Player(std::string _name, int _x, int _y, int _id, int _life, float _spe
      key_down = gdl::Keys::Down;
      key_left = gdl::Keys::Left;
      key_right = gdl::Keys::Right;
-     key_bombe = gdl::Keys::Space;
+     key_bombe = gdl::Keys::Numpad0;
    }
    else if (ty == 1)
    {
