@@ -5,7 +5,7 @@
 // Login   <cao_y@epitech.net>
 // 
 // Started on  Tue May 29 13:41:28 2012 yuguo cao
-// Last update Wed May 30 12:30:14 2012 yuguo cao
+// Last update Thu May 31 15:09:58 2012 yuguo cao
 //
 
 #ifndef		__AUDIO__
@@ -35,6 +35,7 @@ private:
   sf::SoundBuffer	_bdie2;
   sf::SoundBuffer	_bwin;
   sf::SoundBuffer	_blose;
+  sf::SoundBuffer	_bhit;
   sf::SoundBuffer	_bclick;
   sf::Sound		_background;
   sf::Sound		_putBomb;
@@ -43,6 +44,7 @@ private:
   sf::Sound		_die2;
   sf::Sound		_win;
   sf::Sound		_lose;
+  sf::Sound		_hit;
   sf::Sound		_click;
 
 public:

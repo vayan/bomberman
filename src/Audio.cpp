@@ -5,7 +5,7 @@
 // Login   <cao_y@epitech.net>
 // 
 // Started on  Tue May 29 13:41:13 2012 yuguo cao
-// Last update Wed May 30 14:41:20 2012 yuguo cao
+// Last update Thu May 31 15:10:53 2012 yuguo cao
 //
 
 
@@ -27,6 +27,8 @@ Audio::Audio()
     _win.SetBuffer(_bwin);
   if (_blose.LoadFromFile("assets/sound/lose.wav"))
     _lose.SetBuffer(_blose);
+  if (_bhit.LoadFromFile("assets/sound/hit.wav"))
+    _hit.SetBuffer(_bhit);
   // if (!_click.LoadFromFile("loop.wav"))
   //   return EXIT_FAILURE;
 }
@@ -43,6 +45,7 @@ void		Audio::stopAll()
   _explosion.Stop();
   _die.Stop();
   _win.Stop();
+  _hit.Stop();
 }
 
 void		Audio::play(const int type)
@@ -72,6 +75,9 @@ void		Audio::play(const int type)
     case (5):
       sleep(1);
       _lose.Play();
+      break;
+    case (6):
+      _hit.Play();
       break;
     }
 }

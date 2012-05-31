@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 17:27:27 2012 randy lyvet
-// Last update Wed May 30 15:13:39 2012 yuguo cao
+// Last update Thu May 31 15:11:36 2012 yuguo cao
 //
 
 #include	<iostream>
@@ -265,26 +265,29 @@ int    Bomberman::check_death()
   Settings conf;
 
   for (itb = this->objects_.begin(); itb != this->objects_.end(); itb++)
-  {
-    if (((*itb)->_type == 2))
     {
-      if (static_cast<Player*>(*itb)->getTy() == 0)
-        nb_p1 = 1;
-      if (static_cast<Player*>(*itb)->getTy() == 1)
-        nb_p2 = 1;
-      if (static_cast<Player*>(*itb)->getTy() > 1)
-        nb_ia++;
-      if ((nb_p1 == 1 || nb_p2 == 1) && (nb_ia >= 1))
-        return (0);
+      if (((*itb)->_type == 2))
+	{
+	  if (static_cast<Player*>(*itb)->getTy() == 0)
+	    nb_p1 = 1;
+	  if (static_cast<Player*>(*itb)->getTy() == 1)
+	    nb_p2 = 1;
+	  if (static_cast<Player*>(*itb)->getTy() > 1)
+	    nb_ia++;
+	  if ((nb_p1 == 1 || nb_p2 == 1) && (nb_ia >= 1))
+	    return (0);
+	}
     }
-  }
   if (nb_p1 == 1 && nb_ia == 0 && nb_p2 == 0)
-    _EndGame->state = 3;
-   else if (nb_p1 == 0 && nb_ia == 0 && nb_p2 == 1)
-  {
-    _EndGame->state = 4;
-    _audio->play(4);
-  }
+    {
+      _EndGame->state = 3;
+      _audio->play(4);
+    }
+  else if (nb_p1 == 0 && nb_ia == 0 && nb_p2 == 1)
+    {
+      _EndGame->state = 4;
+      _audio->play(4);
+    }
   else if (nb_p1 == 0 && nb_p2 == 0)
     _EndGame->state = 1;
   else

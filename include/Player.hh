@@ -15,6 +15,8 @@
 #include 		"Model.hpp"
 #include        	"Vector3f.hh"
 #include		"Bonus.hh"
+#include		"Audio.hh"
+
 class			Move;
 class			Bomberman;
 class			IA;
@@ -121,6 +123,7 @@ private:
   Bonus			*bon;
   int ty;
   double		score;
+  Audio			*_audio;
 };
 
 #endif

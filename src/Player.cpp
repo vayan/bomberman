@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Tue May 29 15:09:13 2012 alexandre haulotte
-// Last update Thu May 31 15:04:41 2012 alexandre haulotte
+// Last update Thu May 31 15:14:19 2012 yuguo cao
 //
 
 #include		"Player.hh"
@@ -52,8 +52,8 @@ Player::Player()
 {}
 
 Player::Player(std::string _name, int _x, int _y, int _id, int _life, float _speed,
-  int _power, int _nb_bomb, Level *_lvl, Bomberman* _game, int ty, Bonus *bo)
-:AObject()
+	       int _power, int _nb_bomb, Level *_lvl, Bomberman* _game, int ty, Bonus *bo)
+ :AObject()
 {
   Settings Conf;
   multiBombe = false;
@@ -83,32 +83,33 @@ Player::Player(std::string _name, int _x, int _y, int _id, int _life, float _spe
   lvl		= _lvl;
   move		=  new Move();
   game		= _game;
+  _audio	= new Audio();
   _IA		= NULL;
   is_dead	= false;
   this->ty = ty;
   if (_IA == NULL)
-  {
-    if (ty == 0)
     {
-     key_up = gdl::Keys::Up;
-     key_down = gdl::Keys::Down;
-     key_left = gdl::Keys::Left;
-     key_right = gdl::Keys::Right;
-     key_bombe = gdl::Keys::Numpad0;
-   }
-   else if (ty == 1)
-    qwertyorazerty();
-  else
-  {
-   _IA = new IA(Conf.GetDifficulty(), this);
-   key_up = gdl::Keys::A;
-   key_down = gdl::Keys::A;
-   key_left = gdl::Keys::A;
-   key_right = gdl::Keys::A;
-   key_bombe = gdl::Keys::A;
- }
-}
-_type = 2;
+      if (ty == 0)
+	{
+	  key_up = gdl::Keys::Up;
+	  key_down = gdl::Keys::Down;
+	  key_left = gdl::Keys::Left;
+	  key_right = gdl::Keys::Right;
+	  key_bombe = gdl::Keys::Numpad0;
+	}
+      else if (ty == 1)
+	qwertyorazerty();
+      else
+	{
+	  _IA = new IA(Conf.GetDifficulty(), this);
+	  key_up = gdl::Keys::A;
+	  key_down = gdl::Keys::A;
+	  key_left = gdl::Keys::A;
+	  key_right = gdl::Keys::A;
+	  key_bombe = gdl::Keys::A;
+	}
+    }
+  _type = 2;
 }
 
 Player::~Player()
@@ -142,6 +143,8 @@ void	Player::die()
 {
   if (life == 0)
     is_dead = true;
+  else
+    _audio->play(6);
   life--;
   lvl->setCase(x, y, 'f');
   x = fX;
