@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Wed May  2 12:29:56 2012 alexandre haulotte
-// Last update Thu May 31 10:28:46 2012 alexandre haulotte
+// Last update Thu May 31 10:31:52 2012 alexandre haulotte
 //
 
 // 0 : Gauche
@@ -264,7 +264,7 @@ int                   Bombe::checkPath(int direction, int power)
     {
      if (this->lvl->getCase(x, y) == 'w')
        return (go);
-     if (this->lvl->getCase(x, y) == 'd' )
+     if (this->lvl->getCase(x, y) == 'd' && !_pierce)
        return (go + 1);
    }
    break;
@@ -273,7 +273,7 @@ int                   Bombe::checkPath(int direction, int power)
    {
      if (this->lvl->getCase(x, y) == 'w')
        return (go);
-     if (this->lvl->getCase(x, y) == 'd' )
+     if (this->lvl->getCase(x, y) == 'd' && !_pierce)
        return (go + 1);
    }
    break;
@@ -282,7 +282,7 @@ int                   Bombe::checkPath(int direction, int power)
    {
      if (this->lvl->getCase(x, y) == 'w')
        return (go);
-     if (this->lvl->getCase(x, y) == 'd' )
+     if (this->lvl->getCase(x, y) == 'd' && !_pierce)
        return (go + 1);
    }
    break;
@@ -291,7 +291,7 @@ int                   Bombe::checkPath(int direction, int power)
    {
      if (this->lvl->getCase(x, y) == 'w')
        return (go);
-     if (this->lvl->getCase(x, y) == 'd' )
+     if (this->lvl->getCase(x, y) == 'd' && !_pierce)
        return (go + 1);
    }
    break;
