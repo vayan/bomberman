@@ -204,8 +204,7 @@ else if (search_bomb(map, lv) == 0)
                case 'f':
                if (map[x][y-2] != 'b' && map[x][y-3] != 'b')
                {
-                 _pl->ActionLeft(lv, this->object); prev = 'l';
-                 return (0);
+                _pl->ActionLeft(lv, this->object); prev = 'l';
                  break;
                }
                else
