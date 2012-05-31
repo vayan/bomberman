@@ -193,7 +193,7 @@ void 	Menu::SettingMenu_input()
 			menu_select = 0;
 		if (PLUS_BUTTON)
 		{
-			if ((size_select == 0 && nb_icon_ai < 6) || (size_select == 1 && nb_icon_ai < 10) || (size_select == 2 && nb_icon_ai < 22))
+			if ((size_select == 0 && nb_icon_ai < 6) || (size_select == 1 && nb_icon_ai < 10) || (size_select == 2 && nb_icon_ai < 11))
 				nb_icon_ai++;
 		}
 		if (MINUS_BUTTON)
