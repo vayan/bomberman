@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Tue May 29 15:09:13 2012 alexandre haulotte
-// Last update Thu May 31 15:31:23 2012 alexandre haulotte
+// Last update Thu May 31 15:58:06 2012 alexandre haulotte
 //
 
 #include		"Player.hh"
@@ -131,8 +131,8 @@ Player::~Player()
 
 void			Player::initialize(void)
 {
-  gdl::Color c(255, 255, 255);
-  gdl::Color c2(0, 255, 255);
+  gdl::Color c(255, 0, 0);
+  gdl::Color c2(0, 255, 0);
   this->model_ = gdl::Model::load("assets/marvin.fbx");
   this->model_.cut_animation(this->model_, "Take 001", 90, 130, "stop");
   this->model_.cut_animation(this->model_, "Take 001", 35, 55, "run");
@@ -149,27 +149,29 @@ void	Player::die()
   if (life == 0)
     is_dead = true;
   else
-    _audio->play(6);
-  life--;
-  x = fX;
-  y = fY;
-  x_pix         = x * 10;
-  y_pix         = y * 10;
-  time_bombe = -1;
-  time_mvt = -1;
-  switch (ty)
     {
-    case 0:
-      lvl->setCase(x, y, 'r');
-      break;
-    case 1:
-      lvl->setCase(x, y, 'g');
-      break;
-    default:
-      lvl->setCase(x, y, 'i');
-      break;
+      _audio->play(6);
+      life--;
+      x = fX;
+      y = fY;
+      x_pix         = x * 10;
+      y_pix         = y * 10;
+      time_bombe = -1;
+      time_mvt = -1;
+      switch (ty)
+	{
+	case 0:
+	  lvl->setCase(x, y, 'r');
+	  break;
+	case 1:
+	  lvl->setCase(x, y, 'g');
+	  break;
+	default:
+	  lvl->setCase(x, y, 'i');
+	  break;
+	}
+      lvl->setCase(ox, oy, 'f');
     }
-  lvl->setCase(ox, oy, 'f');
 }
 
 bool	Player::isDie()
