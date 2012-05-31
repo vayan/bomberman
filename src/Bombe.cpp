@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Wed May  2 12:29:56 2012 alexandre haulotte
-// Last update Thu May 31 10:31:52 2012 alexandre haulotte
+// Last update Thu May 31 14:13:11 2012 alexandre haulotte
 //
 
 // 0 : Gauche
@@ -15,7 +15,7 @@
 
 #include	"Bombe.hh"
 #include	"Utils.hh"
-
+#include	"GDL/Color.hpp"
 
 void		Bombe::initialize()
 {
@@ -32,7 +32,7 @@ void		Bombe::draw()
 {
   glPushMatrix();
   glTranslatef(1 * x, 1 * y, 1);
-  glScalef(0.002f, 0.002f, 0.002f);
+  glScalef(0.002 * (1 + (150 - timer) / 150.0), 0.002 * (1 + (150 - timer) / 150.0), 0.002 * (1 + (150 - timer) / 150.0));
   glRotatef(90, 1.0f, 0.0f, 0.0f);
   this->model_.draw();
   glPopMatrix();

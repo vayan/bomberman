@@ -10,7 +10,7 @@ void Explosion::update(gdl::GameClock const &, gdl::Input &)
   time += timer.getElapsedTime();
   ti = time;
   if (time > 0.5)
-    ti = time - 0.6;
+    ti = 0.6 - time;
 }
 
 void Explosion::draw(void)
@@ -78,26 +78,27 @@ void           Explosion::drawAnimY(int _y)
   float         offset = 0.5 / 2.0;
   int		ry = y - _y;
   float		div = 0.9;
+  float		l = 0.5;
 
   this->texture_.bind();
   glBegin(GL_QUADS);
   if (ry < 0)
     {
-      drawSurface(x, y - (Down * ti / 0.5) / 2, 1 - offset, 1, 1, 0, (Down * ti / div));
-      drawSurface(x, y - (Down * ti / 0.5) / 2, 1 + offset, 1, 1, 0, (Down * ti / div));
-      drawSurface(x + offset, y - (Down * ti / 0.5) / 2, 1, 1, 2, 0, (Down * ti / div));
-      drawSurface(x - offset, y - (Down * ti / 0.5) / 2, 1, 1, 2, 0, (Down * ti / div));
-      drawSurface(x, (y + offset) - (Down * ti / 0.5) / 2, 1, 1, 3, 0, (Down * ti / div));
-      drawSurface(x, (y - offset) - (Down * ti / 0.5) / 2, 1, 1, 3, 0, (Down * ti / div));
+      drawSurface(x, y - (Down * ti / l) / 2, 1 - offset, 1, 1, 0, (Down * ti / div));
+      drawSurface(x, y - (Down * ti / l) / 2, 1 + offset, 1, 1, 0, (Down * ti / div));
+      drawSurface(x + offset, y - (Down * ti / l) / 2, 1, 1, 2, 0, (Down * ti / div));
+      drawSurface(x - offset, y - (Down * ti / l) / 2, 1, 1, 2, 0, (Down * ti / div));
+      drawSurface(x, (y + offset) - (Down * ti / l) / 2, 1, 1, 3, 0, (Down * ti / div));
+      drawSurface(x, (y - offset) - (Down * ti / l) / 2, 1, 1, 3, 0, (Down * ti / div));
     }
   else if (ry > 0)
     {
-      drawSurface(x, y + (Up * ti / 0.5) / 2, 1 - offset, 1, 1, 0, (Up * ti / div));
-      drawSurface(x, y + (Up * ti / 0.5) / 2, 1 + offset, 1, 1, 0, (Up * ti / div));
-      drawSurface(x + offset, y + (Up * ti / 0.5) / 2, 1, 1, 2, 0, (Up * ti / div));
-      drawSurface(x - offset, y + (Up * ti / 0.5) / 2, 1, 1, 2, 0, (Up * ti / div));
-      drawSurface(x, (y + offset) + (Up * ti / 0.5) / 2, 1, 1, 3, 0, (Up * ti / div));
-      drawSurface(x, (y - offset) + (Up * ti / 0.5) / 2, 1, 1, 3, 0, (Up * ti / div));
+      drawSurface(x, y + (Up * ti / l) / 2, 1 - offset, 1, 1, 0, (Up * ti / div));
+      drawSurface(x, y + (Up * ti / l) / 2, 1 + offset, 1, 1, 0, (Up * ti / div));
+      drawSurface(x + offset, y + (Up * ti / l) / 2, 1, 1, 2, 0, (Up * ti / div));
+      drawSurface(x - offset, y + (Up * ti / l) / 2, 1, 1, 2, 0, (Up * ti / div));
+      drawSurface(x, (y + offset) + (Up * ti / l) / 2, 1, 1, 3, 0, (Up * ti / div));
+      drawSurface(x, (y - offset) + (Up * ti / l) / 2, 1, 1, 3, 0, (Up * ti / div));
     }
   glEnd();
 }
@@ -107,26 +108,27 @@ void          Explosion::drawAnimX(int _x)
   float         offset = 0.5 / 2.0;
   int		rx = x - _x;
   float		div = 0.9;
+  float		l = 0.5;
 
   this->texture_.bind();
   glBegin(GL_QUADS);
   if (rx < 0)
     {
-      drawSurface(x + (Right * ti / 0.5) / 2, y, 1 - offset, 1, 1, (Right * ti / div), 0);
-      drawSurface(x + (Right * ti / 0.5) / 2, y, 1 + offset, 1, 1, (Right * ti / div), 0);
-      drawSurface(x + offset + (Right * ti / 0.5) / 2, y, 1, 1, 2, (Right * ti / div), 0);
-      drawSurface(x - offset + (Right * ti / 0.5) / 2, y, 1, 1, 2, (Right * ti / div), 0);
-      drawSurface(x + (Right * ti / 0.5) / 2, (y + offset), 1, 1, 3, (Right * ti / div), 0);
-      drawSurface(x + (Right * ti / 0.5) / 2, (y - offset), 1, 1, 3, (Right * ti / div), 0);
+      drawSurface(x + (Right * ti / l) / 2, y, 1 - offset, 1, 1, (Right * ti / div), 0);
+      drawSurface(x + (Right * ti / l) / 2, y, 1 + offset, 1, 1, (Right * ti / div), 0);
+      drawSurface(x + offset + (Right * ti / l) / 2, y, 1, 1, 2, (Right * ti / div), 0);
+      drawSurface(x - offset + (Right * ti / l) / 2, y, 1, 1, 2, (Right * ti / div), 0);
+      drawSurface(x + (Right * ti / l) / 2, (y + offset), 1, 1, 3, (Right * ti / div), 0);
+      drawSurface(x + (Right * ti / l) / 2, (y - offset), 1, 1, 3, (Right * ti / div), 0);
     }
   else if (rx > 0)
     {
-      drawSurface(x - (Left * ti / 0.5) / 2, y, 1 - offset, 1, 1, (Left * ti / div), 0);
-      drawSurface(x - (Left * ti / 0.5) / 2, y, 1 + offset, 1, 1, (Left * ti / div), 0);
-      drawSurface(x + offset - (Left * ti / 0.5) / 2, y, 1, 1, 2, (Left * ti / div), 0);
-      drawSurface(x - offset - (Left * ti / 0.5) / 2, y, 1, 1, 2, (Left * ti / div), 0);
-      drawSurface(x - (Left * ti / 0.5) / 2, (y + offset), 1, 1, 3, (Left * ti / div), 0);
-      drawSurface(x - (Left * ti / 0.5) / 2, (y - offset), 1, 1, 3, (Left * ti / div), 0);
+      drawSurface(x - (Left * ti / l) / 2, y, 1 - offset, 1, 1, (Left * ti / div), 0);
+      drawSurface(x - (Left * ti / l) / 2, y, 1 + offset, 1, 1, (Left * ti / div), 0);
+      drawSurface(x + offset - (Left * ti / l) / 2, y, 1, 1, 2, (Left * ti / div), 0);
+      drawSurface(x - offset - (Left * ti / l) / 2, y, 1, 1, 2, (Left * ti / div), 0);
+      drawSurface(x - (Left * ti / l) / 2, (y + offset), 1, 1, 3, (Left * ti / div), 0);
+      drawSurface(x - (Left * ti / l) / 2, (y - offset), 1, 1, 3, (Left * ti / div), 0);
     }
   glEnd();
 }
