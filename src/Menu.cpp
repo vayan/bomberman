@@ -165,39 +165,47 @@ void 		Menu::SettingMenu()
 
 void 	Menu::SettingMenu_input()
 {
-	if (input_.isMouseButtonDown(gdl::Mouse::Left) == true)
-	{
-		int x = input_.getMousePositionX();
-		int y = input_.getMousePositionY();
+  if (input_.isMouseButtonDown(gdl::Mouse::Left) == true)
+    {
+      int x = input_.getMousePositionX();
+      int y = input_.getMousePositionY();
 
-		usleep(40000);
-		if (CANCEL_BUTTON)
-			menu_select = 0;
-		if (PLUS_BUTTON)
-		{
-			if (nb_icon_ai < 22)
-				nb_icon_ai++;
-		}
-		if (MINUS_BUTTON)
-		{
-			if (nb_icon_ai > 0)
-				nb_icon_ai--;
-		}
-		if (EASY_BUTTON)
-			diff_select = 0;
-		if (HARD_BUTTON)
-			diff_select = 1;
-		if (INFERNO_BUTTON)
-			diff_select = 2;
-		if (SAVE_BUTTON)
-			save();
-		if (SMALL_BUTTON)
-			size_select = 0;
-		if (MEDIUM_BUTTON)
-			size_select = 1;
-		if (BIG_BUTTON)
-			size_select = 2;
+      usleep(40000);
+      if (CANCEL_BUTTON)
+	menu_select = 0;
+      if (PLUS_BUTTON)
+	{
+	  if ((size_select == 0 && nb_icon_ai < 6) || (size_select == 1 && nb_icon_ai < 10) || (size_select == 2 && nb_icon_ai < 22))
+	    nb_icon_ai++;
 	}
+      if (MINUS_BUTTON)
+	{
+	  if (nb_icon_ai > 0)
+	    nb_icon_ai--;
+	}
+      if (EASY_BUTTON)
+	diff_select = 0;
+      if (HARD_BUTTON)
+	diff_select = 1;
+      if (INFERNO_BUTTON)
+	diff_select = 2;
+      if (SAVE_BUTTON)
+	save();
+      if (SMALL_BUTTON)
+	{
+	  size_select = 0;
+	  if (nb_icon_ai > 5)
+	    nb_icon_ai = 5;
+	}
+      if (MEDIUM_BUTTON)
+	{
+	  size_select = 1;
+	  if (nb_icon_ai > 9)
+	    nb_icon_ai = 9;
+	}
+      if (BIG_BUTTON)
+	size_select = 2;
+    }
 }
 
 
@@ -211,24 +219,24 @@ void      Menu::initialize(void)
 
 void      Menu::update(void) 
 {
-	myClock.update();
-	time += myClock.getElapsedTime();
-	if (time >= 1.0 / 100.0)
+  myClock.update();
+  time += myClock.getElapsedTime();
+  if (time >= 1.0 / 100.0)
+    {
+      time = 0;
+      sp = sp + 1;
+      camera_.update(gameClock_, input_);
+      draw();
+      switch (menu_select)
 	{
-		time = 0;
-		sp = sp + 1;
-		camera_.update(gameClock_, input_);
-		draw();
-		switch (menu_select)
-		{
-			case 0:
-			MainMenu_input(); break;
-			case 1:
-			SettingMenu_input(); break;
-		}	
-		if (sp == 20)
-			sp = 0;
-	}
+	case 0:
+	  MainMenu_input(); break;
+	case 1:
+	  SettingMenu_input(); break;
+	}	
+      if (sp == 20)
+	sp = 0;
+    }
 }
 
 void      Menu::draw(void) 
