@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 17:27:27 2012 randy lyvet
-// Last update Thu May 31 15:11:36 2012 yuguo cao
+// Last update Thu May 31 16:26:19 2012 yuguo cao
 //
 
 #include	<iostream>
@@ -148,7 +148,7 @@ void  Bomberman::refresh_setting()
 {
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  gluPerspective(70, (double)1600/900, 1, 1000);
+  gluPerspective(90, (double)1600/900, 1, 1000);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
   glEnable(GL_DEPTH_TEST);
@@ -374,7 +374,7 @@ Bomberman::Bomberman(Level *my_level)
 
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  gluPerspective(70, (double)1600/900, 1, 1000);
+  gluPerspective(90, (double)1600/900, 1, 1000);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
   glEnable(GL_DEPTH_TEST);

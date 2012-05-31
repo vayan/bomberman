@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 16:11:33 2012 randy lyvet
-// Last update Wed May 30 12:45:34 2012 randy lyvet
+// Last update Thu May 31 16:31:12 2012 yuguo cao
 //
 
 #include        <cstdlib>
@@ -27,9 +27,9 @@ void		Camera::setPosition(float height, float width)
 {
   position_.x = 1 + (width / 2);
   position_.y = height / 2;
-  position_.z = width;
+  position_.z = width / 1.7;
   target_.x = width / 2;
-  target_.y = height / 2;
+  target_.y = height / 2 ;
   target_.z = 0;
   gluLookAt(position_.x, position_.y, position_.z, target_.x, target_.y, target_.z, 0, 0, 1);
 }
