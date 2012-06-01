@@ -112,6 +112,11 @@ void	IA::IA_moves(Level *lv, const std::list<AObject*>& all_object)
 	    if (see_down(map, lv) != 0)
 	      see_left(map, lv);
 	}
+      else if (y > 1)
+	{
+	  if (see_down(map, lv) != 0)
+	    see_left(map, lv);
+	}
       else if (y == (lv->getWidth() - 2) && x < 3)
 	see_down(map, lv);
       else
