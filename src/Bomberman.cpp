@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 17:27:27 2012 randy lyvet
-// Last update Thu May 31 16:26:19 2012 yuguo cao
+// Last update Fri Jun  1 11:19:15 2012 yuguo cao
 //
 
 #include	<iostream>
@@ -289,7 +289,10 @@ int    Bomberman::check_death()
       _audio->play(4);
     }
   else if (nb_p1 == 0 && nb_p2 == 0)
-    _EndGame->state = 1;
+    {
+      _EndGame->state = 1;
+      _audio->play(5);
+    }
   else
     return (0);
   return (1);

@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Tue May 29 15:09:13 2012 alexandre haulotte
-// Last update Thu May 31 15:58:06 2012 alexandre haulotte
+// Last update Fri Jun  1 11:19:18 2012 yuguo cao
 //
 
 #include		"Player.hh"
