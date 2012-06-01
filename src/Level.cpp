@@ -5,7 +5,7 @@
 // Login   <cao_y@epitech.net>
 // 
 // Started on  Fri Apr 27 12:36:02 2012 yuguo cao
-// Last update Fri Jun  1 11:38:18 2012 alexandre haulotte
+// Last update Fri Jun  1 13:16:53 2012 yuguo cao
 //
 
 #include "Level.hh"
@@ -73,7 +73,6 @@ void					Level::readMap(const std::string& path)
  fmap.close();
  _width = _map.size();
  _height = _map[0].size();
- printMap(this);
 }
 
 void					Level::generateMap()
@@ -109,7 +108,6 @@ void					Level::generateMap()
  _height = height;
  placeHole();
  placePlayer(nbPlayers, nbIas);
- printMap(this);
 }
 
 void					Level::placePlayer(int nbPlayers, int nbIas)
@@ -122,10 +120,6 @@ void					Level::placePlayer(int nbPlayers, int nbIas)
   int					tmp_y = 1;
   char					player = 'r';
 
-  if (rep < 4)
-    std::cout << "Pas jouable." << std::endl;
-  //throw(new Errur("Too many players for this map."));
-  std::cout << per << " " << rep << std::endl;
   while (nbTot > 0)
     {
       if (!(i % rep))
@@ -148,7 +142,6 @@ void					Level::placePlayer(int nbPlayers, int nbIas)
 	  else
 	    tmp_x = i + 1;
 	  _map[tmp_x][tmp_y] = player;
-	  std::cout << i << " " << tmp_x << " " << tmp_y << std::endl;
 	  if (player == 'r' && nbPlayers == 2)
 	    player = 'g';
 	  else if (player == 'g' || nbPlayers == 1)

@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Tue May 29 15:09:13 2012 alexandre haulotte
-// Last update Fri Jun  1 11:19:29 2012 alexandre haulotte
+// Last update Fri Jun  1 12:11:17 2012 yuguo cao
 //
 
 #include		"Player.hh"
@@ -311,7 +311,7 @@ int 			Player::ActionLeft(Level *lvl, std::list<AObject*>& all_object)
     this->model_.set_anim_speed("run", 6 - speed);
     if (move->TryMove(this->x, this->y - 1, this, lvl, all_object) || this->y_pix > this->y * 10)
     {
-     if ((this->y_pix - 1 <= this->y * 10 - 7))
+     if ((this->y_pix - 1 <= this->y * 10 - 5))
      {
        this->y -= 1;
      }
@@ -335,7 +335,7 @@ int 			Player::ActionRight(Level *lvl, std::list<AObject*>& all_object)
     this->model_.set_anim_speed("run", 6 - speed);
     if (move->TryMove(this->x, this->y + 1, this, lvl, all_object) || this->y_pix < this->y * 10)
     {
-     if ((this->y_pix + 1 >= this->y * 10 + 3))
+     if ((this->y_pix + 1 >= this->y * 10 + 5))
      {
        this->y += 1;
      }
@@ -359,7 +359,7 @@ int 			Player::ActionDown(Level *lvl, std::list<AObject*>& all_object)
     this->model_.set_anim_speed("run", 6 - speed);
     if (move->TryMove(this->x + 1, this->y, this, lvl, all_object) || this->x_pix < this->x * 10)
     {
-     if ((this->x_pix + 1 >= this->x * 10 + 3))
+     if ((this->x_pix + 1 >= this->x * 10 + 5))
      {
        this->x += 1;
      }
@@ -383,7 +383,7 @@ int 			Player::ActionUp(Level *lvl, std::list<AObject*>& all_object)
     this->model_.set_anim_speed("run", 6 - speed);
     if (move->TryMove(this->x - 1, this->y, this, lvl, all_object) || this->x_pix > this->x * 10)
     {
-     if ((this->x_pix - 1 <= this->x * 10 - 7))
+     if ((this->x_pix - 1 <= this->x * 10 - 5))
      {
        this->x -= 1;
      }

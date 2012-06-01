@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 17:27:27 2012 randy lyvet
-// Last update Fri Jun  1 12:50:10 2012 alexandre haulotte
+// Last update Fri Jun  1 13:18:01 2012 yuguo cao
 //
 
 #include	<iostream>
@@ -175,7 +175,7 @@ void  Bomberman::update_all_obj(std::list<AObject*>::iterator itb)
         {
 	  if (scor < static_cast<Player*>((*itb))->getScore())
 	    scor = static_cast<Player*>((*itb))->getScore();
-	  std::cout << "View Hight Score: " << "open HScore.html" << std::endl;
+	  std::cout << "View High Score: " << "open HScore.html" << std::endl;
         }
         delete (*itb);
         this->objects_.erase(itb);

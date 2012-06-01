@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Wed May 30 11:55:05 2012 alexandre haulotte
-// Last update Fri Jun  1 12:56:56 2012 alexandre haulotte
+// Last update Fri Jun  1 13:17:49 2012 yuguo cao
 //
 
 #include	"Score.hh"
@@ -71,7 +71,6 @@ Score::Score()
 
 int   Score::checkScore(int sc)
 {
-  std::cout << H1score << std::endl;
   if (sc > H3score)
     {
       std::ofstream outfile (filename.c_str());
