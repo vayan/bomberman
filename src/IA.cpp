@@ -5,7 +5,7 @@
 // Login   <carlie_a@epitech.net>
 // 
 // Started on  Mon May  7 10:03:08 2012 anatole carlier
-// Last update Thu May 31 15:48:03 2012 alexandre haulotte
+// Last update Fri Jun  1 11:33:43 2012 alexandre haulotte
 //
 
 #include "IA.hh"
@@ -45,7 +45,7 @@ IA::IA(int level, Player* pl)
 
 IA::~IA() {}
 
-void	IA::IA_moves(Level *lv, std::list<AObject*> all_object)
+void	IA::IA_moves(Level *lv, const std::list<AObject*>& all_object)
 {
   std::map<int, std::map<int, char> > map;
 
@@ -124,7 +124,7 @@ void	IA::IA_moves(Level *lv, std::list<AObject*> all_object)
     }
 }
 
-int     IA::search_bomb(std::map<int, std::map<int, char> > map, Level *lv)
+int     IA::search_bomb(std::map<int, std::map<int, char> >& map, Level *lv)
 {
   if (map[x][y] == 'b')
     {
@@ -171,7 +171,7 @@ int     IA::search_bomb(std::map<int, std::map<int, char> > map, Level *lv)
     return (0);
 }
 
-void	IA::prev_move(std::map<int, std::map<int, char> > map, Level *lv)
+void	IA::prev_move(std::map<int, std::map<int, char> >& map, Level *lv)
 {
   switch (prev)
     {
@@ -196,7 +196,7 @@ void	IA::prev_move(std::map<int, std::map<int, char> > map, Level *lv)
     }
 }
 
-int	IA::see_left(std::map<int, std::map<int, char> > map, Level *lv)
+int	IA::see_left(std::map<int, std::map<int, char> >& map, Level *lv)
 {
   wait = time_wait;
   switch (map[x][y-1])
@@ -234,7 +234,7 @@ int	IA::see_left(std::map<int, std::map<int, char> > map, Level *lv)
   return (1);
 }
 
-int     IA::see_up(std::map<int, std::map<int, char> > map, Level *lv)
+int     IA::see_up(std::map<int, std::map<int, char> >& map, Level *lv)
 {
   wait = time_wait;
   switch (map[x-1][y])
@@ -279,7 +279,7 @@ int     IA::see_up(std::map<int, std::map<int, char> > map, Level *lv)
   return (1);
 }
 
-int     IA::see_right(std::map<int, std::map<int, char> > map, Level *lv)
+int     IA::see_right(std::map<int, std::map<int, char> >& map, Level *lv)
 {
   wait = time_wait;
   switch (map[x][y+1])
@@ -316,7 +316,7 @@ int     IA::see_right(std::map<int, std::map<int, char> > map, Level *lv)
   return (1);
 }
 
-int     IA::see_down(std::map<int, std::map<int, char> > map, Level *lv)
+int     IA::see_down(std::map<int, std::map<int, char> >& map, Level *lv)
 {
   wait = time_wait;
   switch (map[x+1][y])

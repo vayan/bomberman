@@ -18,6 +18,7 @@ class UI
 public:
   static void 	glEnable2D();
   static void 	glDisable2D();
+  // Not const because img.bind is not const
   static void	DrawImage(gdl::Image img, int x_off, int y_off);
 };
 

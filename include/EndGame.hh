@@ -23,8 +23,8 @@
 
 class EndGame : public UI, public AObject {
 public:
-  virtual int		getX() const { return (0); }
-  virtual int 		getY() const { return (0); }
+  virtual int		getX() const;
+  virtual int 		getY() const;
 
   int			state;
 

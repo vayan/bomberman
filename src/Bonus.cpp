@@ -5,13 +5,13 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Tue May 22 14:44:42 2012 alexandre haulotte
-// Last update Thu May 31 11:48:51 2012 alexandre haulotte
+// Last update Fri Jun  1 11:45:45 2012 alexandre haulotte
 //
 
 #include	"Bonus.hh"
 #include	"Object.hh"
 
-Bonus::Bonus(int size, Level *lvl, Texture *tex)
+Bonus::Bonus(int size, Level *lvl, const Texture *tex)
 {
   int	x = 1;
   int	y = 1;

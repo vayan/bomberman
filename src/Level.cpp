@@ -5,7 +5,7 @@
 // Login   <cao_y@epitech.net>
 // 
 // Started on  Fri Apr 27 12:36:02 2012 yuguo cao
-// Last update Thu May 31 13:35:58 2012 yuguo cao
+// Last update Fri Jun  1 11:38:18 2012 alexandre haulotte
 //
 
 #include "Level.hh"
@@ -41,7 +41,7 @@ char					Level::getCase(int x, int y)
   return (c);
 }
 
-void					Level::readMap(std::string path)
+void					Level::readMap(const std::string& path)
 {
   char					c;
   std::ifstream				fmap;
@@ -183,7 +183,7 @@ void					Level::placeHole()
  }
 }
 
-void					Level::printMap(Level *lvl)
+void					Level::printMap(Level *lvl) const
 {
   std::map<int, std::map<int, char> > _map = lvl->getMap();
   for (int i = 0; i < lvl->getHeight(); i++)

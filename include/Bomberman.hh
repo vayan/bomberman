@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 17:26:16 2012 randy lyvet
-// Last update Wed May 30 11:45:58 2012 randy lyvet
+// Last update Fri Jun  1 11:48:40 2012 alexandre haulotte
 
 #ifndef BOMBERMAN_HH_
 # define BOMBERMAN_HH_
@@ -43,6 +43,7 @@ class EndGame;
 class 		Bomberman : public gdl::Game
 {
 public:
+  // object modifier dans les sous class
   std::list<AObject*>&			getObj();
   Bombe*				addBombe(Player* pl);
 

@@ -5,7 +5,7 @@
 // Login   <cao_y@epitech.net>
 // 
 // Started on  Wed May 23 11:03:56 2012 yuguo cao
-// Last update Wed May 30 15:40:53 2012 yuguo cao
+// Last update Fri Jun  1 11:39:05 2012 alexandre haulotte
 //
 
 #include "Hud.hh"
@@ -115,7 +115,7 @@ void		Hud::printPlayer()
     }
 }
 
-  void		Hud::addPlayer(Player *player)
+  void		Hud::addPlayer(const Player *player)
   {
     if (!_player1)
       _player1 = player;
@@ -123,7 +123,7 @@ void		Hud::printPlayer()
       _player2 = player;
   }
 
-  void		Hud::drawImage(gdl::Image img, int x, int y)
+  void		Hud::drawImage(gdl::Image& img, int x, int y)
   {
     glAlphaFunc(GL_GREATER, 0);
     glEnable(GL_ALPHA_TEST);

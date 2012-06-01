@@ -26,13 +26,14 @@ public:
   IA(int level, Player *pl);
   ~IA();
 
-  void	IA_moves(Level *lv, std::list<AObject*> all_object);
-  void	prev_move(std::map<int, std::map<int, char> > map, Level *lv);
-  int	see_left(std::map<int, std::map<int, char> > map, Level *lv);
-  int	see_up(std::map<int, std::map<int, char> > map, Level *lv);
-  int	see_down(std::map<int, std::map<int, char> > map, Level *lv);
-  int	see_right(std::map<int, std::map<int, char> > map, Level *lv);
-  int	search_bomb(std::map<int, std::map<int, char> > map, Level *lv);
+  void	IA_moves(Level *lv, const std::list<AObject*>& all_object);
+  // Map pas const car on ne peut pas faire appel à [][]
+  void	prev_move(std::map<int, std::map<int, char> >& map, Level *lv);
+  int	see_left(std::map<int, std::map<int, char> >& map, Level *lv);
+  int	see_up(std::map<int, std::map<int, char> >& map, Level *lv);
+  int	see_down(std::map<int, std::map<int, char> >& map, Level *lv);
+  int	see_right(std::map<int, std::map<int, char> >& map, Level *lv);
+  int	search_bomb(std::map<int, std::map<int, char> >& map, Level *lv);
 
   enum level
     {

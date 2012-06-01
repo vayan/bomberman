@@ -136,10 +136,10 @@ void 	Settings::aff_settings()
 	// std::cout << "nb player : " << nb_players << std::endl;
 }
 
-Settings::Difficulty Settings::GetDifficulty() { return (diffuclt); }
-int		   Settings::GetNb_AI()  { return (nb_ai); }
-int		   Settings::GetMapx() { return (map_x); }
-int		   Settings::GetMapY() { return (map_y); }
-int		 	Settings::GetNbPlayers() { return (nb_players); }
-int 		Settings::GetSVG() { return (restore_svg); }
-int 		Settings::GetTypeKeyboard() { return (type_keyboard); }
+Settings::Difficulty Settings::GetDifficulty() const { return (diffuclt); }
+int		   Settings::GetNb_AI()  const { return (nb_ai); }
+int		   Settings::GetMapx() const { return (map_x); }
+int		   Settings::GetMapY()  const { return (map_y); }
+int		 	Settings::GetNbPlayers() const { return (nb_players); }
+int 		Settings::GetSVG() const { return (restore_svg); }
+int 		Settings::GetTypeKeyboard() const { return (type_keyboard); }

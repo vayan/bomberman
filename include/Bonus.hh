@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Tue May 22 14:34:48 2012 alexandre haulotte
-// Last update Wed May 30 11:46:28 2012 randy lyvet
+// Last update Fri Jun  1 11:46:10 2012 alexandre haulotte
 //
 
 #ifndef	__UU_HH__
@@ -18,13 +18,14 @@
 class Bonus
 {
   std::map<int, std::map<int, char> >   _map;
-  Texture				*tex_;
+  const Texture				*tex_;
 
 public:
+  // non const car operateur [][]
   char		getBonus(int x, int y);
   AObject*	createBonus(int x, int y, int z, int ty);
 
-  Bonus(int size, Level *lvl, Texture *tex);
+  Bonus(int size, Level *lvl, const Texture *tex);
   ~Bonus();
 };
 

@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Tue May 29 15:09:13 2012 alexandre haulotte
-// Last update Fri Jun  1 11:19:18 2012 yuguo cao
+// Last update Fri Jun  1 11:19:29 2012 alexandre haulotte
 //
 
 #include		"Player.hh"
@@ -174,7 +174,7 @@ void	Player::die()
     }
 }
 
-bool	Player::isDie()
+bool	Player::isDie() const
 {
   return (is_dead);
 }
@@ -299,7 +299,7 @@ Player			*Player::unpack(std::string& to_tokenize)
 }
 
 
-int 			Player::ActionLeft(Level *lvl, std::list<AObject*> all_object)
+int 			Player::ActionLeft(Level *lvl, std::list<AObject*>& all_object)
 {
   if ((input->isKeyDown(key_left) || _IA != NULL))
   {
@@ -323,7 +323,7 @@ int 			Player::ActionLeft(Level *lvl, std::list<AObject*> all_object)
  return (1);
 }
 
-int 			Player::ActionRight(Level *lvl, std::list<AObject*> all_object)
+int 			Player::ActionRight(Level *lvl, std::list<AObject*>& all_object)
 {
   if ((input->isKeyDown(key_right) || _IA != NULL))
   {
@@ -347,7 +347,7 @@ int 			Player::ActionRight(Level *lvl, std::list<AObject*> all_object)
  return (1);
 }
 
-int 			Player::ActionDown(Level *lvl, std::list<AObject*> all_object)
+int 			Player::ActionDown(Level *lvl, std::list<AObject*>& all_object)
 {
   if ((input->isKeyDown(key_down) || _IA != NULL))
   {
@@ -371,7 +371,7 @@ int 			Player::ActionDown(Level *lvl, std::list<AObject*> all_object)
  return (1);
 }
 
-int 			Player::ActionUp(Level *lvl, std::list<AObject*> all_object)
+int 			Player::ActionUp(Level *lvl, std::list<AObject*>& all_object)
 {
   if ((input->isKeyDown(key_up) || _IA != NULL))
   {

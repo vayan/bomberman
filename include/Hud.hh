@@ -5,7 +5,7 @@
 // Login   <cao_y@epitech.net>
 // 
 // Started on  Wed May 23 11:05:00 2012 yuguo cao
-// Last update Wed May 30 15:27:05 2012 yuguo cao
+// Last update Fri Jun  1 11:39:21 2012 alexandre haulotte
 //
 
 #ifndef		__HUD__
@@ -27,8 +27,8 @@ enum PSTATS
 class Hud
 {
 private:
-  Player			*_player1;
-  Player			*_player2;
+  const Player			*_player1;
+  const Player			*_player2;
   std::vector<gdl::Image>	_stats;
   gdl::Image			_back;
   gdl::Image			_back2;
@@ -38,11 +38,11 @@ public:
   ~Hud();
 
 public:
-  void		addPlayer(Player*);
+  void		addPlayer(const Player*);
   void		printStat(float, int, int);
   void		printPlayer();
   void		draw();
-  void		drawImage(gdl::Image, int, int);
+  void		drawImage(gdl::Image&, int, int);
   void		mode2d();
   void		mode3d();
   void		deletePlayer(const int, const int);

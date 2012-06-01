@@ -52,3 +52,5 @@ void      EndGame::draw(void)
 	UI::glDisable2D();
 }
 
+int           EndGame::getX() const { return (0); }
+int           EndGame::getY() const { return (0); }

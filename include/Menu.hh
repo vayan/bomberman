@@ -54,7 +54,7 @@ public:
   void				update(void);
   void				PutSelect_difficulty();
   void 				PutSelect_size();
-  void        PutSelect_keyboard();
+  void     		   	PutSelect_keyboard();
   void 				DrawAIicon();
   void 				save();
 

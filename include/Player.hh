@@ -59,10 +59,10 @@ public:
   void setTime_mvt(int tmvt);
   void setNbBomb(int nbb) { nb_bomb = nbb;}
   void  qwertyorazerty();
-  int 			ActionLeft(Level *lvl, std::list<AObject*>);
-  int 			ActionRight(Level *lvl, std::list<AObject*>);
-  int 			ActionUp(Level *lvl, std::list<AObject*>);
-  int 			ActionDown(Level *lvl, std::list<AObject*>);
+  int 			ActionLeft(Level *lvl, std::list<AObject*>&);
+  int 			ActionRight(Level *lvl, std::list<AObject*>&);
+  int 			ActionUp(Level *lvl, std::list<AObject*>&);
+  int 			ActionDown(Level *lvl, std::list<AObject*>&);
   void			ActionDropBomb(Level *lvl);
   void			ScanAllAction(Level *lvl, std::list<AObject*>& all_object);
   void			initialize(void);
@@ -70,7 +70,7 @@ public:
   void	 		draw(void);
   std::list<AObject*>::iterator   scanBonus(std::list<AObject*>& all);
   void			die();
-  bool			isDie();
+  bool			isDie() const;
   ////////POUR LES SAUVEGARDES////////////////
   std::string		&pack();
   Player		    *unpack(std::string&);

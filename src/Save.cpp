@@ -6,7 +6,7 @@ Save::Save()
 	filename = "save.bm";
 }
 
-void 	Save::SaveFile(Level *lvl, std::list<AObject*> all_obj)
+void 	Save::SaveFile(Level *lvl, std::list<AObject*>& all_obj)
 {
 	std::list<AObject*>::iterator it;
 
@@ -27,7 +27,7 @@ void 	Save::SaveFile(Level *lvl, std::list<AObject*> all_obj)
 	outfile.close();
 }
 
-std::string Save::GetLvl()
+std::string Save::GetLvl() const
 {
 	std::string buff = "";
 	std::ifstream infile;
@@ -41,7 +41,7 @@ std::string Save::GetLvl()
 	return (buff);
 }
 
-std::string 	Save::GetFilename() { return (filename); }
+std::string 	Save::GetFilename() const { return (filename); }
 
 Save::~Save() 
 {

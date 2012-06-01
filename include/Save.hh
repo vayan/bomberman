@@ -16,9 +16,9 @@ public:
   Save();
   ~Save();
 
-  void 		SaveFile(Level *lvl, std::list<AObject*> objects_);
-  std::string	GetLvl();
-  std::string	GetFilename();
+  void 		SaveFile(Level *lvl, std::list<AObject*> &objects_);
+  std::string	GetLvl() const;
+  std::string	GetFilename() const;
   void		restore();
 private:
   std::string	filename;

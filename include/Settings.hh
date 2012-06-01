@@ -13,7 +13,8 @@
 // 6em ligne -> restore svg
 // 7em ligne -> typekeyboard (1 azerty / 2 qwerty)
 
-class Settings {
+class Settings
+{
 public:
   enum Difficulty
     {
@@ -23,22 +24,22 @@ public:
     };
 
 
-  Difficulty	GetDifficulty();
+  Difficulty	GetDifficulty() const;
   void 		aff_settings();
-  int		GetNb_AI();
-  int		GetMapx();
-  int		GetMapY();
-  int 		GetNbPlayers();
-  int 		GetSVG();
+  int		GetNb_AI() const;
+  int		GetMapx() const;
+  int		GetMapY() const;
+  int 		GetNbPlayers() const;
+  int 		GetSVG() const;
   void 		SetSVG(int rest);
   void 		SetDifficulty(Difficulty);
   void		SetNb_AI(int);
   void		SetMapx(int);
   void		SetMapY(int);
-  void    SetKeyboard(int);
+  void    	SetKeyboard(int);
   void		SetNbPlayers(int);
   void	   	RefreshSettings();
-  int     GetTypeKeyboard();
+  int     	GetTypeKeyboard() const;
 
   Settings();
   ~Settings();
@@ -50,7 +51,7 @@ private:
   int		map_y;
   int 		nb_players;
   int 		restore_svg;
-  int     type_keyboard;
+  int     	type_keyboard;
 };
 
 #endif
