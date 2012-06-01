@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 17:27:27 2012 randy lyvet
-// Last update Fri Jun  1 11:19:15 2012 yuguo cao
+// Last update Fri Jun  1 12:50:10 2012 alexandre haulotte
 //
 
 #include	<iostream>
@@ -173,9 +173,9 @@ void  Bomberman::update_all_obj(std::list<AObject*>::iterator itb)
         _audio->play(3);
         if (static_cast<Player*>((*itb))->getTy() < 2)
         {
-          Score scr;
-          scr.checkScore(static_cast<Player*>((*itb))->getScore());
-          std::cout << "View Hight Score: " << "file:///HightScore.scr.html" << std::endl;
+	  if (scor < static_cast<Player*>((*itb))->getScore())
+	    scor = static_cast<Player*>((*itb))->getScore();
+	  std::cout << "View Hight Score: " << "open HScore.html" << std::endl;
         }
         delete (*itb);
         this->objects_.erase(itb);
@@ -263,33 +263,47 @@ int    Bomberman::check_death()
   int nb_p2 = 0;
   int nb_ia = 0;
   Settings conf;
+  Score scr;
 
   for (itb = this->objects_.begin(); itb != this->objects_.end(); itb++)
     {
       if (((*itb)->_type == 2))
 	{
 	  if (static_cast<Player*>(*itb)->getTy() == 0)
-	    nb_p1 = 1;
+	    {
+	      if (scor < static_cast<Player*>((*itb))->getScore())
+		scor = static_cast<Player*>((*itb))->getScore();
+	      nb_p1 = 1;
+	    }
 	  if (static_cast<Player*>(*itb)->getTy() == 1)
-	    nb_p2 = 1;
+	    {
+	      if (scor < static_cast<Player*>((*itb))->getScore())
+		scor = static_cast<Player*>((*itb))->getScore();
+	      nb_p2 = 1;
+	    }
 	  if (static_cast<Player*>(*itb)->getTy() > 1)
-	    nb_ia++;
+	    {
+	      nb_ia++;
+	    }
 	  if ((nb_p1 == 1 || nb_p2 == 1) && (nb_ia >= 1))
 	    return (0);
 	}
     }
   if (nb_p1 == 1 && nb_ia == 0 && nb_p2 == 0)
     {
+      scr.checkScore(scor);
       _EndGame->state = 3;
       _audio->play(4);
     }
   else if (nb_p1 == 0 && nb_ia == 0 && nb_p2 == 1)
     {
+      scr.checkScore(scor);
       _EndGame->state = 4;
       _audio->play(4);
     }
   else if (nb_p1 == 0 && nb_p2 == 0)
     {
+      scr.checkScore(scor);
       _EndGame->state = 1;
       _audio->play(5);
     }

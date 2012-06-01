@@ -5,7 +5,7 @@
 // Login   <haulot_a@epitech.net>
 // 
 // Started on  Wed May 30 11:52:59 2012 alexandre haulotte
-// Last update Wed May 30 14:00:04 2012 randy lyvet
+// Last update Fri Jun  1 12:13:19 2012 alexandre haulotte
 //
 
 #ifndef	__SCORE_HH__
@@ -18,7 +18,9 @@
 class Score
 {
 private :
-  int		Hscore;
+  int		H1score;
+  int		H2score;
+  int		H3score;
   std::string	filename;
 
 public:

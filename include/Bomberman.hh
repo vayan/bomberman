@@ -5,7 +5,7 @@
 // Login   <lyvet_r@epitech.net>
 // 
 // Started on  Thu May  3 17:26:16 2012 randy lyvet
-// Last update Fri Jun  1 11:48:40 2012 alexandre haulotte
+// Last update Fri Jun  1 12:44:37 2012 alexandre haulotte
 
 #ifndef BOMBERMAN_HH_
 # define BOMBERMAN_HH_
@@ -68,6 +68,7 @@ private:
   std::list<AObject*>			objects_;
   gdl::Clock				myClock;
 
+  int					scor;
   Pause					*_pause;
   EndGame				*_EndGame;
   Camera				camera_;
